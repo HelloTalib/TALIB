@@ -71,7 +71,7 @@ export default {
 
         {
           desc:
-            "This is a funny Project. Uses Javascript Random functionality for random name. All the data is encrypted by input typed data. This was just a project and was coded by me in 7th Grade.",
+            "This is an Online Store Project. Uses WordPress with premium WoodMart Theme. All the product uploaded manually. This was just a project and was coded by me in 7th Grade.",
           title: "Online Store",
           source: "https://shopup.bdwebninja.com/",
           year: "2019",

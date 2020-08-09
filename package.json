@@ -1,6 +1,6 @@
 {
-  "name": "bismillah",
-  "version": "0.1.0",
+  "name": "portfolio",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -25,5 +25,25 @@
     "vue-cli-plugin-vuetify": "^0.5.0",
     "vue-template-compiler": "^2.5.21",
     "vuetify-loader": "^1.0.5"
-  }
+  },
+  "description": "personal portfolio website ",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abutalib4599/TALIB.git"
+  },
+  "keywords": [
+    "bdwebninja",
+    "talib",
+    "abutalib",
+    "abutalib4599",
+    "mdabutalib",
+    "flexthemes"
+  ],
+  "author": "abutalib4599",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abutalib4599/TALIB/issues"
+  },
+  "homepage": "https://github.com/abutalib4599/TALIB#readme"
 }

@@ -56,17 +56,17 @@ export default {
       socialIcons: [
         {
           name: "Facebook",
-          link: "https://www.fb.com/abutalib4566",
+          link: "https://www.facebook.com/abutalib4599",
           icon: "mdi-facebook"
         },
         {
           name: "Twitter",
-          link: "https://twitter.com/abutalib4566",
+          link: "https://twitter.com/abutalib4599",
           icon: "mdi-twitter"
         },
         {
           name: "Github",
-          link: "https://github.com/TALIB4590",
+          link: "https://github.com/abutalib4599",
           icon: "mdi-github-circle"
         }
       ]

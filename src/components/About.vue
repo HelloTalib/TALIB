@@ -33,7 +33,7 @@
                 <!-- Flex 2 as info -->
                 <v-flex xs6 no-wrap subheading>
                   <div class="mb-3">Savar, Dhaka, Bangladesh</div>
-                  <div class="mb-3">abutalib4590@gmail.com</div>
+                  <div class="mb-3">abutalib4599@gmail.com</div>
                   <div class="mb-3">+8801795142054</div>
                 </v-flex>
               </v-layout>

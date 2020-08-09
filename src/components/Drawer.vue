@@ -56,7 +56,7 @@ export default {
       socialIcons: [
         {
           name: "Facebook",
-          link: "https://www.facebook.com/abutalib4599",
+          link: "https://facebook.com/abutalib4599",
           icon: "mdi-facebook"
         },
         {

@@ -84,7 +84,13 @@ export default {
           name: "BitDegree",
           alt: "Full Stack Web Development",
           stream: "Certification of Full-Stack Web Developer",
-          duration: "2019-Present"
+          duration: "2019-2020"
+        },
+        {
+          name: "Learn With Hasin Hayder",
+          alt: "WordPress Expert",
+          stream: "Mastering WordPress",
+          duration: "2019-2020"
         },
         {
           name: "Eduonix Learning Solutions",
@@ -133,16 +139,18 @@ export default {
         {
           skillName: "Web Design",
           skillSets: [
-            { name: "HTML 5", exp: 5 },
-            { name: "CSS 3", exp: 4 },
+            { name: "HTML", exp: 5 },
+            { name: "CSS", exp: 4 },
             { name: "Bootstrap", exp: 5 },
+            { name: "UIkit", exp: 5 },
             { name: "Meterilize", exp: 4 },
             { name: "SASS", exp: 5 },
-            { name: "Javascript", exp: 4 },
+            { name: "JavaScript", exp: 4 },
+            { name: "jQuery", exp: 5 },
+            { name: "AJAX", exp: 4 },
             { name: "VueJs", exp: 5 },
-            { name: "Vuetify", exp: 4 },
+            { name: "VuetifyJs", exp: 4 },
             { name: "ReactJs", exp: 3 },
-            { name: "JQuery", exp: 5 },
           ]
         },
         {

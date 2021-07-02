@@ -69,27 +69,27 @@ export default {
     return {
       items: [
 
-        {
-          desc:
-            "This is an Online Store Project. Uses WordPress with premium WoodMart Theme. All the product uploaded manually. This was just a project and was coded by me in 7th Grade.",
-          title: "Online Store",
-          source: "https://shopup.bdwebninja.com/",
-          year: "2019",
-          img: require("@/assets/portfolio/shopup.png")
-        },
-        {
-          title: "Dashboard",
-          desc:
-            "A Online Course Learning management system written in Vuejs. Uses Firebase for the database management. All the data is encrypted using BCrypt. This was my first big project and was coded by me in 7th Grade.",
-          source: "https://todo-vuejs.netlify.com/",
-          year: "2019",
-          img: require("@/assets/portfolio/dashboard.png")
-        },
+        // {
+        //   desc:
+        //     "This is an Online Store Project. Uses WordPress with premium WoodMart Theme. All the product uploaded manually. This was just a project and was coded by me in 7th Grade.",
+        //   title: "Online Store",
+        //   source: "https://shopup.bdwebninja.com/",
+        //   year: "2019",
+        //   img: require("@/assets/portfolio/shopup.png")
+        // },
+        // {
+        //   title: "Dashboard",
+        //   desc:
+        //     "A Online Course Learning management system written in Vuejs. Uses Firebase for the database management. All the data is encrypted using BCrypt. This was my first big project and was coded by me in 7th Grade.",
+        //   source: "https://tgerodo-vuejs.netlify.app",
+        //   year: "2019",
+        //   img: require("@/assets/portfolio/dashboard.png")
+        // },
 {
           title: "SubReddit",
           desc:
             "A subreddit web application. Uses axios for the database management. All the data is encrypted using axios. This was also learning based project with Brad Traversy",
-          source: "https://subreddit.netlify.com/",
+          source: "https://subreddit.netlify.app",
           year: "2018",
           img: require("@/assets/portfolio/subreddit.png")
         },
@@ -97,7 +97,7 @@ export default {
           title: "Countries",
           desc:
             "A Project management system written in VueJs. Uses Firebase for the database and Authentication management. All the data is encrypted using Firebase Authentication.",
-          source: "https://countries-1.netlify.com/",
+          source: "https://countries-1.netlify.app/",
           year: "2018",
           img: require("@/assets/portfolio/login.png")
         },

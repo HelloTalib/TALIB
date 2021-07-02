@@ -27,6 +27,12 @@ export default {
     return {
       places: [
         {
+          title: "Year 2021 and forward",
+          desc:
+            "I got a job as a Software Engineer ‍at BdThemes. Here, My Primary work is Contribute to Develop WordPress Plugins/Elementor Addons",
+          year: "2021",
+        },
+        {
           title: "Year 2020 and forward",
           desc:
             "Entered mainstream development and I almost write code daily till date. Some of my works are used by thousands of people on a daily basis. Check my GitHub repo.",

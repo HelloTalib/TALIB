@@ -172,7 +172,7 @@ export default {
       contactDetails: [
         {
           title: "Address",
-          val: "Savar, Dhaka, Bangladesh",
+          val: "Banani, Bogura, Bangladesh",
           icon: "mdi-map-marker"
         },
         { title: "Phone", val: "+8801795142054", icon: "mdi-phone" },
@@ -186,9 +186,9 @@ export default {
           icon: "mdi-facebook"
         },
         {
-          name: "Twitter",
-          link: "https://twitter.com/abutalib4599",
-          icon: "mdi-twitter"
+          name: "Linkedin",
+          link: "https://linkedin.com/in/abutalib4599",
+          icon: "mdi-linkedin"
         },
         {
           name: "Github",
@@ -219,7 +219,7 @@ export default {
 
       // Hey jQuery! Here I come
       $.ajax({
-        url: "https://talib.netlify.com/mail.php",
+        url: "https://talib.netlify.app/mail.php",
         data: {
           name: name,
           email: email,

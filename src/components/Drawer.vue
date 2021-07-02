@@ -6,7 +6,7 @@
       <h2 class="display-3 font-weight-black primary--text mb-2">TALIB</h2>
 
       <!--  Designation -->
-      <span class="title font-weight-light mb-5">BD WEBNINJA</span>
+      <span class="title font-weight-light mb-5">WEBNINJA</span>
 
       <!-- Buttons links -->
       <div v-for="item in navItems" :key="item.title">

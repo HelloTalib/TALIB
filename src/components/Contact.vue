@@ -186,14 +186,14 @@ export default {
           icon: "mdi-facebook"
         },
         {
+          name: "Twitter",
+          link: "https://twitter.com/abutalib4599",
+          icon: "mdi-twitter"
+        },
+        {
           name: "Linkedin",
           link: "https://linkedin.com/in/abutalib4599",
           icon: "mdi-linkedin"
-        },
-        {
-          name: "Github",
-          link: "https://github.com/abutalib4599",
-          icon: "mdi-github-circle"
         }
       ]
     };

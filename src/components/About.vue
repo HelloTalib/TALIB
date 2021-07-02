@@ -75,8 +75,8 @@
 
       <!-- Second flex that covers the rest of the webpage with image -->
       <v-flex hidden-sm-and-down md5 text-xs-right text-uppercase>
-        <div class="display-1">Software Engineer</div>
-        <span class="primary--text headline font-weight-light">Talib</span>
+        <div class="display-2 headline">Software Engineer</div>
+        <span class="primary--text text-italic title">Talib</span>
 
         <!-- That image -->
         <v-img

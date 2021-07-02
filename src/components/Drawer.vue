@@ -48,7 +48,7 @@ export default {
         { title: "@Hey", link: "#" },
         { title: "About Me", link: "#about" },
         { title: "Experience", link: "#experience" },
-        { title: "Skills & Education", link: "#skills" },
+        { title: "Education & Skills", link: "#skills" },
         { title: "Portfolio", link: "#portfolio" },
         { title: "Contact", link: "#contact" }
       ],

@@ -29,7 +29,7 @@ export default {
         {
           title: "Year 2021 and forward",
           desc:
-            "I got a job as a Software Engineer ‍at BdThemes. Here, My Primary work is Contribute to Develop WordPress Plugins/Elementor Addons",
+            "I got a job as a Software Engineer ‍at BdThemes. Here my primary task is Contribute to Develop WordPress Plugins/Elementor Addons😊",
           year: "2021",
         },
         {

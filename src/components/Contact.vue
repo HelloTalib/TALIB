@@ -76,7 +76,7 @@
             </v-flex>
 
             <v-flex xs12 :class="{ 'mb-2': errorAlert }">
-              <v-alert :value="errorAlert" type="error">Unable to send the message.</v-alert>
+              <v-alert :value="errorAlert" type="error">Unable to send the message. Please try another method to contact me</v-alert>
             </v-flex>
 
             <v-flex text-xs-right>

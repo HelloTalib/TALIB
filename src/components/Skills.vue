@@ -112,25 +112,25 @@ export default {
         },
         {
           name: "Zirabo Dewan Idris College",
-          alt: "General Subjects",
-          stream: "Heigher Secondary",
+          alt: "General Subject",
+          stream: "Higher Secondary",
           duration: "2015-2017"
         },
         {
           name: "Jumarbari High School",
-          alt: "General Subjects",
+          alt: "General Subject",
           stream: "Senior Secondary",
           duration: "2013-2015"
         },
         {
           name: "Kamalerpara High School",
-          alt: "General Subjects",
+          alt: "General Subject",
           stream: "Junior Secondary",
           duration: "2009-2012"
         },
         {
           name: "Folia Digar Govt. Primary School",
-          alt: "General Subjects",
+          alt: "General Subject",
           stream: "Primary Education",
           duration: "2004-2008"
         }

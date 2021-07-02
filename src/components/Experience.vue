@@ -33,7 +33,7 @@ export default {
           year: "2021",
         },
         {
-          title: "Year 2020 and forward",
+          title: "Mastering WordPress and Practice...",
           desc:
             "Entered mainstream development and I almost write code daily till date. Some of my works are used by thousands of people on a daily basis. Check my GitHub repo.",
           year: "2020",

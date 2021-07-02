@@ -176,7 +176,7 @@ export default {
           icon: "mdi-map-marker"
         },
         { title: "Phone", val: "+8801795142054", icon: "mdi-phone" },
-        { title: "Email", val: "abutalib4599@gmail.com", icon: "mdi-email" }
+        { title: "Email", val: "talib@bdthemes.com", icon: "mdi-email" }
       ],
 
       socialIcons: [

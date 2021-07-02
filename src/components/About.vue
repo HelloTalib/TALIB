@@ -33,7 +33,7 @@
                 <!-- Flex 2 as info -->
                 <v-flex xs6 no-wrap subheading>
                   <div class="mb-3">Banani, Bogura, Bangladesh</div>
-                  <div class="mb-3">abutalib4599@gmail.com</div>
+                  <div class="mb-3">talib@bdthemes.com</div>
                   <div class="mb-3">+8801795142054</div>
                 </v-flex>
               </v-layout>
@@ -95,7 +95,7 @@ export default {
   data() {
     return {
       aboutMe:
-        "Hello there! I'm Abu Talib. Everyone also known me as TALIB. I am a Software Engineer at . I have over 3+ years of web developing experience in various languages. For me, sky's the limit.",
+        "Hello there! I'm Abu Talib. Everyone also known me as TALIB. I am a Software Engineer at BdThemes. I have over 3+ years of web developing experience in various languages. For me, sky's the limit.",
       aboutItems: [
         {
           title: "Front End Development",

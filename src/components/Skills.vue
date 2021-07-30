@@ -5,11 +5,9 @@
       <v-flex xs12 mb-5 position>
         <v-layout justify-space-between>
           <h2 class="display-2 font-weight-bold primary--text mb-4">What I Know</h2>
-          <blockquote style="max-width:230px;">
+          <blockquote>
             <p class="subheading font-weight-light font-italic">
-              Need a More
-              Professional
-              describtion of me? Well, here's exactly that;)
+              Need a more professional describtion of me? Well, here's exactly that:)
             </p>
             <footer class="text-xs-center">
               <v-btn
@@ -82,8 +80,8 @@ export default {
       educations: [
         {
           name: "BitDegree",
-          alt: "Full Stack Web Development",
-          stream: "Certification of Full-Stack Web Developer",
+          alt: "Full-Stack Web Developer",
+          stream: "Certification of Full-Stack Web Development",
           duration: "2019-2020"
         },
         {
@@ -141,9 +139,9 @@ export default {
           skillSets: [
             { name: "HTML", exp: 5 },
             { name: "CSS", exp: 4 },
-            { name: "Bootstrap", exp: 5 },
+            { name: "BootsTrap", exp: 5 },
             { name: "UIkit", exp: 5 },
-            { name: "Meterilize", exp: 4 },
+            { name: "MeterilizeCSS", exp: 4 },
             { name: "SASS", exp: 5 },
             { name: "JavaScript", exp: 4 },
             { name: "jQuery", exp: 5 },
@@ -156,11 +154,12 @@ export default {
         {
           skillName: "Web Development & Others",
           skillSets: [
-            { name: "PHP & MYSQL", exp: 4 },
-            { name: "WordPress Customization", exp: 5 },
-            { name: "WordPress Theme Development", exp: 5 },
-            { name: "Elementor Addons Development", exp: 4 },
-            { name: "WordPress Plugin Development", exp: 3 },
+            { name: "PHP", exp: 4 },
+            { name: "MYSQL", exp: 3 },
+            { name: "WordPress", exp: 4 },
+            { name: "Elementor", exp: 5 },
+            { name: "WooCommerce", exp: 5 },
+            { name: "Gutenburg", exp: 3 },
             { name: "ExpressJs", exp: 3 },
             { name: "MongoDB", exp: 3 },
             { name: "NodeJs", exp: 3 },
@@ -179,6 +178,14 @@ export default {
 section {
   position: relative;
 }
+  blockquote{
+    max-width: 290px;
+    text-align: center;
+    margin-bottom: 0;
+}
+    blockquote p{
+      margin-bottom: 0;
+    }
 
 .abstract-2 {
   position: absolute !important;
@@ -189,5 +196,10 @@ section {
 
 .abstract-2 ~ * {
   z-index: 1 !important;
+}
+@media screen and (max-width:600px) {
+  blockquote{
+    display: none;
+  }
 }
 </style>

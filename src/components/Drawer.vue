@@ -60,9 +60,9 @@ export default {
           icon: "mdi-facebook"
         },
         {
-          name: "Twitter",
-          link: "https://twitter.com/abutalib4599",
-          icon: "mdi-twitter"
+          name: "WordPress",
+          link: "https://profiles.wordpress.org/abutalib/",
+          icon: "mdi-wordpress"
         },
         {
           name: "Github",

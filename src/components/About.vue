@@ -95,7 +95,7 @@ export default {
   data() {
     return {
       aboutMe:
-        "Hello there! I'm Abu Talib. Everyone also known me as TALIB. I am a Software Engineer at BdThemes. I have over 3+ years of web developing experience in various languages. For me, sky's the limit.",
+        "Hi there! I'm Abu Talib. But everyone also known me as TALIB. I am a Software Engineer at BdThemes. I have over 3+ years of web developing experience in various languages. For me, sky's the limit.",
       aboutItems: [
         {
           title: "Front End Development",

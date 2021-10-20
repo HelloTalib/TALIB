@@ -180,21 +180,22 @@ export default {
       ],
 
       socialIcons: [
-        {
-          name: "Facebook",
-          link: "https://facebook.com/abutalib4599",
-          icon: "mdi-facebook"
+                {
+          name: "Telegram",
+          link: "https://t.me/abutalib4599",
+          icon: "mdi-telegram"
         },
-        {
-          name: "Twitter",
-          link: "https://twitter.com/abutalib4599",
-          icon: "mdi-twitter"
-        },
+
+          {
+            name: "Twitter",
+            link: "https://twitter.com/abutalib4599",
+            icon: "mdi-twitter"
+          },
         {
           name: "Linkedin",
           link: "https://linkedin.com/in/abutalib4599",
           icon: "mdi-linkedin"
-        }
+        },
       ]
     };
   },

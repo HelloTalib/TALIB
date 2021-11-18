@@ -67,7 +67,7 @@ export default {
         },
         {
           name: "Upwork",
-          link: "https://www.upwork.com/workwith/mdabut6/",
+          link: "https://www.upwork.com/workwith/abutalib4599/",
           icon: "icon-upwork",
         },
       ],

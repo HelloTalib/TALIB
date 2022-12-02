@@ -78,11 +78,11 @@ export default {
       fullIcon: "mdi-star-circle-outline",
       emptyIcon: "mdi-star-circle-outline",
       educations: [
-        //        {  name: "Asian University of Bangladesh",
-        //   alt: "DIPLOMA",
-        //   stream: "Computer Science and Engineering",
-        //   duration: "2021"
-        // },
+               {  name: "Asian University of Bangladesh",
+          alt: "CSE",
+          stream: "Computer Science and Engineering",
+          duration: "2017-2021"
+        },
         {
           name: "BitDegree",
           alt: "Full-Stack Web Developer",

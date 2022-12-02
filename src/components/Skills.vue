@@ -78,6 +78,11 @@ export default {
       fullIcon: "mdi-star-circle-outline",
       emptyIcon: "mdi-star-circle-outline",
       educations: [
+        //        {  name: "Asian University of Bangladesh",
+        //   alt: "DIPLOMA",
+        //   stream: "Computer Science and Engineering",
+        //   duration: "2021"
+        // },
         {
           name: "BitDegree",
           alt: "Full-Stack Web Developer",
@@ -102,12 +107,14 @@ export default {
           stream: "Front End Development",
           duration: "2017-2018"
         },
-        {
-          name: "National University of Bangladesh",
-          alt: "Political Science",
-          stream: "Bachelor of Social Science",
-          duration: "2017-Present"
-        },
+        // {
+        //   name: "National University of Bangladesh",
+        //   alt: "Political Science",
+        //   stream: "Bachelor of Social Science",
+        //   duration: "2017-Present"
+        // },
+
+
         {
           name: "Zirabo Dewan Idris College",
           alt: "General Subject",

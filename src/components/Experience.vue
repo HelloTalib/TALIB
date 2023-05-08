@@ -30,7 +30,7 @@ export default {
           title: "Year 2023 and forward!",
           desc:
             "As a Software Engineer of BDTHEMES, I'm contribute to Develop bdthemes all products such as ElementPack, PrimeSlider, Ultimate Post kit, Ultimate Store Kit, Live Copy Paste plugins and trying to switch new technology..",
-          year: "2022",
+          year: "2023",
         },
         {
           title: "Year 2022",

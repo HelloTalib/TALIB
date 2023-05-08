@@ -30,20 +30,20 @@
   "main": ".eslintrc.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abutalib4599/TALIB.git"
+    "url": "git+https://github.com/talibswe/TALIB.git"
   },
   "keywords": [
     "bdwebninja",
     "talib",
     "abutalib",
-    "abutalib4599",
+    "talibswe",
     "mdabutalib",
     "flexthemes"
   ],
-  "author": "abutalib4599",
+  "author": "talibswe",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/abutalib4599/TALIB/issues"
+    "url": "https://github.com/talibswe/TALIB/issues"
   },
-  "homepage": "https://github.com/abutalib4599/TALIB#readme"
+  "homepage": "https://github.com/talibswe/TALIB#readme"
 }

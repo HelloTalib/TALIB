@@ -176,24 +176,24 @@ export default {
           icon: "mdi-map-marker"
         },
         { title: "Phone", val: "+8801795142054", icon: "mdi-phone" },
-        { title: "Email", val: "talib@bdthemes.com", icon: "mdi-email" }
+        { title: "Email", val: "talibswe@gmail.com.com", icon: "mdi-email" }
       ],
 
       socialIcons: [
                 {
           name: "Telegram",
-          link: "https://t.me/abutalib4599",
+          link: "https://t.me/talibswe",
           icon: "mdi-telegram"
         },
 
           {
             name: "Twitter",
-            link: "https://twitter.com/abutalib4599",
+            link: "https://twitter.com/talibswe",
             icon: "mdi-twitter"
           },
         {
           name: "Linkedin",
-          link: "https://linkedin.com/in/abutalib4599",
+          link: "https://linkedin.com/in/talibswe",
           icon: "mdi-linkedin"
         },
       ]

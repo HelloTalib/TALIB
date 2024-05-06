@@ -62,7 +62,7 @@ export default {
         },
         {
           name: "Github",
-          link: "https://github.com/talibswe",
+          link: "https://github.com/hellotalib",
           icon: "mdi-github-circle",
         },
         {

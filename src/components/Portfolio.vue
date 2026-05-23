@@ -1,74 +1,66 @@
 <template>
   <section id="portfolio">
-    <v-layout pa-5 wrap>
+    <v-row class="pa-5" no-gutters>
       <v-img
-        :src="require('@/assets/abstract-3.png')"
+        :src="abstract3"
         height="100%"
         width="100%"
         class="abstract-3"
       ></v-img>
-      <h2 class="display-2 font-weight-bold primary--text mb-4">
+      <h2 class="text-h3 font-weight-bold text-primary mb-4">
         What I've Done
       </h2>
-      <v-carousel class="elevation-0" height="600" hide-controls :cycle="true">
+      <v-carousel class="elevation-0" height="600" :show-arrows="false" cycle hide-delimiter-background>
         <v-carousel-item v-for="(item, index) in items" :key="index">
-          <v-sheet class="transparent pa-5" height="100%">
-            <div class="text-xs-center mb-5">
-              <h2 class="primary--text title font-weight-light mb-1">
+          <v-sheet class="bg-transparent pa-5" height="100%">
+            <div class="text-center mb-5">
+              <h2 class="text-primary text-h6 font-weight-light mb-1">
                 Modern  looking html Template
               </h2>
-              <span class="subheading">Created for Practice😁</span>
+              <span class="text-subtitle-1">Created for Practice😁</span>
             </div>
-            <v-layout wrap>
-              <v-flex shrink>
+            <v-row no-gutters>
+              <v-col cols="auto">
                 <div class="mb-3" style="max-width: 500px">
-                  <h2 class="primary--text title font-weight-light mb-3">
+                  <h2 class="text-primary text-h6 font-weight-light mb-3">
                     Project Details
                   </h2>
-                  <div class="subheading mb-5">{{ item.desc }}</div>
-                  <h2 class="primary--text title font-weight-light">
+                  <div class="text-subtitle-1 mb-5">{{ item.desc }}</div>
+                  <h2 class="text-primary text-h6 font-weight-light">
                     Project Info
                   </h2>
-                  <v-list class="transparent">
-                    <v-list-tile>
-                      <v-list-tile-action>
-                        <v-icon class="primary">mdi-code-tags</v-icon>
-                      </v-list-tile-action>
-                      <v-list-tile-title class="mr-2">{{
-                        item.title
-                      }}</v-list-tile-title>
-                    </v-list-tile>
-                  </v-list>
-                  <v-list class="transparent">
-                    <v-list-tile>
-                      <v-list-tile-action>
-                        <v-icon class="primary">mdi-access-point</v-icon>
-                      </v-list-tile-action>
-                      <v-list-tile-title class="mr-2">
+                  <v-list class="bg-transparent" density="compact">
+                    <v-list-item>
+                      <template v-slot:prepend>
+                        <v-icon color="primary">mdi-code-tags</v-icon>
+                      </template>
+                      <v-list-item-title class="mr-2">{{ item.title }}</v-list-item-title>
+                    </v-list-item>
+                    <v-list-item>
+                      <template v-slot:prepend>
+                        <v-icon color="primary">mdi-access-point</v-icon>
+                      </template>
+                      <v-list-item-title class="mr-2">
                         <a
                           :href="item.source"
                           target="_blank"
-                          class="white--text"
+                          class="text-white"
                         >
                           Live Demo
                           <v-icon>mdi-link-variant</v-icon>
                         </a>
-                      </v-list-tile-title>
-                    </v-list-tile>
-                  </v-list>
-                  <v-list class="transparent">
-                    <v-list-tile>
-                      <v-list-tile-action>
-                        <v-icon class="primary">mdi-calendar</v-icon>
-                      </v-list-tile-action>
-                      <v-list-tile-title class="mr-2">{{
-                        item.year
-                      }}</v-list-tile-title>
-                    </v-list-tile>
+                      </v-list-item-title>
+                    </v-list-item>
+                    <v-list-item>
+                      <template v-slot:prepend>
+                        <v-icon color="primary">mdi-calendar</v-icon>
+                      </template>
+                      <v-list-item-title class="mr-2">{{ item.year }}</v-list-item-title>
+                    </v-list-item>
                   </v-list>
                 </div>
-              </v-flex>
-              <v-flex hidden-sm-and-down>
+              </v-col>
+              <v-col class="d-none d-md-flex">
                 <a :href="item.source">
                   <v-img
                     height="350"
@@ -78,89 +70,102 @@
                     class="mx-auto"
                   ></v-img>
                 </a>
-              </v-flex>
-            </v-layout>
+              </v-col>
+            </v-row>
           </v-sheet>
         </v-carousel-item>
       </v-carousel>
-    </v-layout>
+    </v-row>
   </section>
 </template>
 
 <script>
+import abstract3 from "@/assets/abstract-3.png";
+import demoFlorence from "@/assets/portfolio/demo-florence.png";
+import demoBrooklyn from "@/assets/portfolio/demo-brooklyn.png";
+import demoPeakShop from "@/assets/portfolio/demo-peak-shop.png";
+import demoOxpitan from "@/assets/portfolio/demo-oxpitan.png";
+import personalPortfolio from "@/assets/portfolio/personal-portfolio.png";
+import demoBalou from "@/assets/portfolio/demo-balou.png";
+import demoYard from "@/assets/portfolio/demo-yard.png";
+import demoCraft from "@/assets/portfolio/demo-craft.png";
+import demoCreativeHub from "@/assets/portfolio/demo-creative-hub.png";
+import demoDesignBites from "@/assets/portfolio/demo-design-bites.png";
+
 export default {
   data() {
     return {
+      abstract3,
       items: [
         {
           desc: "This is a Beauty Parlour Website. Uses html, CSS, SASS &; UIKIT Framework to Design this static website. This website is really outstanding to look😍.",
           title: "Parlour Website",
           source: "https://floreence.netlify.app/",
           year: "2019",
-          img: require("@/assets/portfolio/demo-florence.png"),
+          img: demoFlorence,
         },
         {
           desc: "This is an Agency Website. Uses html, CSS, SASS &; UIKIT Framework to Design this static website. This was just a project and was coded by me in 7th Grade.",
           title: "Agency Website",
           source: "https://brooklynn.netlify.app/",
           year: "2019",
-          img: require("@/assets/portfolio/demo-brooklyn.png"),
+          img: demoBrooklyn,
         },
         {
           desc: "This is an Online Store Project. Uses html, CSS, SASS &; UIKIT Framework to Design this static website",
           title: "Online Store",
           source: "https://peak-shop.netlify.app/",
           year: "2019",
-          img: require("@/assets/portfolio/demo-peak-shop.png"),
+          img: demoPeakShop,
         },
         {
           desc: "This is a Non-Profit Organization Website. I use html, CSS, SASS &; UIKIT Framework to Design this static website",
           title: "Non-Profit Website",
           source: "https://oxpitan.netlify.app/",
           year: "2019",
-          img: require("@/assets/portfolio/demo-oxpitan.png"),
+          img: demoOxpitan,
         },
         {
           desc: "This is My Personal Portfolio Website. I used html, CSS, SASS VueJs, VuetifyJs ect. to develop this awesome looking protfolio website;",
           title: "Portfolio Website",
           source: "https://talib.netlify.app/",
           year: "2019",
-          img: require("@/assets/portfolio/personal-portfolio.png"),
+          img: personalPortfolio,
         },
         {
           desc: "This is kids wears and accesories Website. I used html, CSS, SASS to develop this website;",
           title: "Kids Website",
           source: "https://babiees.netlify.app/",
           year: "2019",
-          img: require("@/assets/portfolio/demo-balou.png"),
+          img: demoBalou,
         },
         {
           desc: "This is an interior design Website. I used html, CSS, SASS to develop this awesome looking interior website;",
           title: "Interior Website",
           source: "https://yaard.netlify.app/",
           year: "2019",
-          img: require("@/assets/portfolio/demo-yard.png"),
+          img: demoYard,
         },
         {
           desc: "This is a Handcraft design Website. I used html, CSS, SASS to develop this awesome looking handcraft website;",
           title: "Craft Website",
           source: "https://crafti.netlify.app/",
           year: "2019",
-          img: require("@/assets/portfolio/demo-craft.png"),
+          img: demoCraft,
         },
         {
           desc: "This is a Creative minimal looking Website. I used html, CSS, SASS to develop this awesome looking handcraft website;",
           title: "Creative Website",
           source: "https://creativehub.netlify.app/",
           year: "2019",
-          img: require("@/assets/portfolio/demo-creative-hub.png"),
+          img: demoCreativeHub,
         },
         {
           desc: "This is a Blog Website. I used html, CSS, SASS to develop this awesome looking blog resources website;",
           title: "Blog Website",
           source: "https://designbites.netlify.app/",
           year: "2019",
-          img: require("@/assets/portfolio/demo-design-bites.png"),
+          img: demoDesignBites,
         },
         // {
         //   title: "Dashboard",

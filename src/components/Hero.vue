@@ -1,19 +1,21 @@
 <template>
-  <v-img :src="heroImage" style="height:100vh">
-    <v-layout fill-height justify-end align-end pa-5 text-xs-right>
+  <v-img :src="heroImage" cover style="height:100vh">
+    <div class="d-flex fill-height justify-end align-end pa-5 text-right">
       <div>
-        <div class="text-uppercase display-2">ABU TALIB</div>
-        <h1 class="primary--text text-uppercase display-6">Software Engineer</h1>
+        <div class="text-uppercase text-h3">ABU TALIB</div>
+        <h1 class="text-primary text-uppercase text-h5">Software Engineer</h1>
       </div>
-    </v-layout>
+    </div>
   </v-img>
 </template>
 
 <script>
+import heroImage from "@/assets/hero.jpg";
+
 export default {
   data() {
     return {
-      heroImage: require("@/assets/hero.jpg")
+      heroImage
     };
   }
 };

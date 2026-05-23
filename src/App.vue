@@ -1,18 +1,18 @@
 <template>
-  <v-app dark>
+  <v-app>
     <Drawer/>
-    <v-content class="hide-overflow" style="padding-left:300px" id="mainContent">
+    <v-main class="hide-overflow" style="padding-left:300px" id="mainContent">
       <div>
         <Hero/>
-        <div class="container py-5 px-0 fluid">
+        <v-container fluid class="py-5 px-0">
           <About/>
           <Experience/>
           <Skills/>
           <Portfolio/>
           <Contact/>
-        </div>
+        </v-container>
       </div>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 

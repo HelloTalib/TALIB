@@ -1,27 +1,23 @@
 <template>
-  <v-navigation-drawer fixed dark app id="mainDrawer">
-    <v-layout align-center fill-height py-5 justify-center column>
-      <!-- The name typed logo -->
+  <v-navigation-drawer permanent theme="dark" id="mainDrawer" width="300">
+    <div class="d-flex flex-column align-center justify-center fill-height py-5 text-center">
       <!-- Developer name -->
-      <h2 class="display-3 font-weight-black primary--text mb-2">TALIB</h2>
+      <h2 class="text-h2 font-weight-black text-primary mb-2">TALIB</h2>
 
       <!--  Designation -->
-      <span class="title font-weight-light mb-5">WEBNINJA</span>
+      <span class="text-h6 font-weight-light mb-5">WEBNINJA</span>
 
       <!-- Buttons links -->
       <div v-for="item in navItems" :key="item.title">
         <v-btn
-          class="mb-3 text-capitalize subheading font-weight-medium"
-          flat
-          dark
+          class="mb-3 text-capitalize text-subtitle-1 font-weight-medium"
+          variant="text"
           :href="item.link"
-          >{{ item.title }}</v-btn
-        >
+        >{{ item.title }}</v-btn>
       </div>
 
       <!-- Social Icons -->
       <div class="mt-auto">
-        <!-- Now for each item, we create a new icon -->
         <div class="my-4">
           <a
             class="mx-1"
@@ -31,13 +27,13 @@
             target="_blank"
             :href="social.link"
           >
-            <v-btn icon>
+            <v-btn icon variant="text">
               <v-icon>{{ social.icon }}</v-icon>
             </v-btn>
           </a>
         </div>
       </div>
-    </v-layout>
+    </div>
   </v-navigation-drawer>
 </template>
 
@@ -63,7 +59,7 @@ export default {
         {
           name: "Github",
           link: "https://github.com/hellotalib",
-          icon: "mdi-github-circle",
+          icon: "mdi-github",
         },
         {
           name: "Upwork",

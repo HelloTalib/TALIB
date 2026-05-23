@@ -1,15 +1,15 @@
 <template>
   <section id="skills">
-    <v-layout pa-5 justify-space-around wrap>
-      <v-img :src="require('@/assets/abstract-2.png')" height="711" width="778" class="abstract-2"></v-img>
-      <v-flex xs12 mb-5 position>
-        <v-layout justify-space-between>
-          <h2 class="display-2 font-weight-bold primary--text mb-4">What I Know</h2>
+    <v-row class="pa-5" justify="space-around" no-gutters>
+      <v-img :src="abstract2" height="711" width="778" class="abstract-2"></v-img>
+      <v-col cols="12" class="mb-5" style="position:relative">
+        <v-row justify="space-between" no-gutters>
+          <h2 class="text-h3 font-weight-bold text-primary mb-4">What I Know</h2>
           <blockquote>
-            <p class="subheading font-weight-light font-italic">
+            <p class="text-subtitle-1 font-weight-light font-italic">
               Need a more professional describtion of me? Well, here's exactly that:)
             </p>
-            <footer class="text-xs-center">
+            <footer class="text-center">
               <v-btn
                 color="primary"
                 href="https://drive.google.com/file/d/1fv4O3MIylENtRadVWQRKjVlqe0V1uF5z/view?usp=sharing"
@@ -18,63 +18,67 @@
               </v-btn>
             </footer>
           </blockquote>
-        </v-layout>
-      </v-flex>
-      <v-flex xs12 md3>
-        <h3 class="headline font-weight-medium mb-4 primary--text">My Education</h3>
-        <v-sheet v-for="(edu,index) in educations" :key="index" class="mb-5 transparent">
-          <v-layout>
+        </v-row>
+      </v-col>
+      <v-col cols="12" md="3">
+        <h3 class="text-h5 font-weight-medium mb-4 text-primary">My Education</h3>
+        <v-sheet v-for="(edu,index) in educations" :key="index" class="mb-5 bg-transparent">
+          <div class="d-flex">
             <v-sheet class="mr-3" color="primary" height="100" width="1"></v-sheet>
-            <v-flex>
+            <div class="flex-grow-1">
               <div class="mb-3">{{edu.name}}</div>
-              <div class="text-xs-right">
-                <span class="title primary--text">{{edu.stream}}</span>
+              <div class="text-right">
+                <span class="text-h6 text-primary">{{edu.stream}}</span>
                 <footer>
                   <div>{{edu.alt}}</div>
                   <div>{{edu.duration}}</div>
                 </footer>
               </div>
-            </v-flex>
-          </v-layout>
+            </div>
+          </div>
         </v-sheet>
-      </v-flex>
-      <v-flex xs12 md4>
-        <h3 class="headline font-weight-medium mb-4 primary--text">My Skills</h3>
+      </v-col>
+      <v-col cols="12" md="4">
+        <h3 class="text-h5 font-weight-medium mb-4 text-primary">My Skills</h3>
         <div class="mb-4" v-for="(skill, index) in skills" :key="index">
-          <h4 class="text-uppercase mb-3 primary--text">{{skill.skillName}}</h4>
+          <h4 class="text-uppercase mb-3 text-primary">{{skill.skillName}}</h4>
           <div class="pl-4">
-            <v-layout
-              align-center
-              v-for="(currentSkill, index) in skill.skillSets"
-              :key="index"
-              mb-4
+            <v-row
+              align="center"
+              v-for="(currentSkill, sIndex) in skill.skillSets"
+              :key="sIndex"
+              class="mb-4"
+              no-gutters
             >
-              <v-flex xs5>
-                <h5 class="subheading">{{currentSkill.name}}</h5>
-              </v-flex>
-              <v-flex xs7>
+              <v-col cols="5">
+                <h5 class="text-subtitle-1">{{currentSkill.name}}</h5>
+              </v-col>
+              <v-col cols="7">
                 <v-rating
-                  dense
+                  density="compact"
                   readonly
-                  color="primary"
-                  background-color="#111"
+                  active-color="primary"
+                  color="#111"
                   :full-icon="fullIcon"
                   :empty-icon="emptyIcon"
-                  :value="currentSkill.exp"
+                  :model-value="currentSkill.exp"
                 ></v-rating>
-              </v-flex>
-            </v-layout>
+              </v-col>
+            </v-row>
           </div>
         </div>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
   </section>
 </template>
 
 <script>
+import abstract2 from "@/assets/abstract-2.png";
+
 export default {
   data() {
     return {
+      abstract2,
       fullIcon: "mdi-star-circle-outline",
       emptyIcon: "mdi-star-circle-outline",
       educations: [

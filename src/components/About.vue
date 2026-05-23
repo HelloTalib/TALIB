@@ -1,99 +1,100 @@
 <template>
   <section id="about">
-    <v-layout class="pa-5 wrap" id="about-me">
+    <v-row class="pa-5" id="about-me" no-gutters>
       <!-- Background Image -->
-      <v-img :src="require('@/assets/abstract-1.png')" width="613" height="528" class="abstract-1"></v-img>
+      <v-img :src="abstract1" width="613" height="528" class="abstract-1"></v-img>
 
       <!-- The basic info page -->
-      <v-flex xs12 md7>
+      <v-col cols="12" md="7">
         <!-- Section 1, Who I am -->
         <section>
-          <h2 class="display-2 font-weight-bold primary--text mb-4">Who I am.</h2>
-          <v-layout justify-space-between wrap>
+          <h2 class="text-h3 font-weight-bold text-primary mb-4">Who I am.</h2>
+          <v-row justify="space-between">
             <!-- Info and signature -->
-            <v-flex xs12 md7>
-              <div class="subheading mb-5 mb-0">
+            <v-col cols="12" md="7">
+              <div class="text-subtitle-1 mb-5">
                 <p>{{ aboutMe }}</p>
 
                 <!--  The Image -->
-                <v-img :src="require('@/assets/signature.png')" width="150" class="ml-auto"></v-img>
+                <v-img :src="signature" width="150" class="ml-auto"></v-img>
               </div>
-            </v-flex>
+            </v-col>
 
             <!-- Second flex, contact details -->
-            <v-flex xs12 md4 mb-5>
-              <v-layout align-center>
+            <v-col cols="12" md="4" class="mb-5">
+              <v-row align="center" no-gutters>
                 <!-- Flex 1 as headings -->
-                <v-flex xs6 text-uppercase primary--text font-weight-medium>
+                <v-col cols="6" class="text-uppercase text-primary font-weight-medium">
                   <div class="mb-3">Location</div>
                   <div class="mb-3">Email</div>
                   <div class="mb-3">Phone</div>
-                </v-flex>
+                </v-col>
 
                 <!-- Flex 2 as info -->
-                <v-flex xs6 no-wrap subheading>
+                <v-col cols="6" class="text-subtitle-1">
                   <div class="mb-3">Banani, Bogura, Bangladesh</div>
                   <div class="mb-3">talib@bdthemes.com</div>
                   <div class="mb-3">+8801795142054</div>
-                </v-flex>
-              </v-layout>
-            </v-flex>
-          </v-layout>
+                </v-col>
+              </v-row>
+            </v-col>
+          </v-row>
         </section>
 
         <!-- Section 2, What I can do for you -->
         <section>
-          <!-- Heading -->
-          <h2 class="display-2 primary--text font-weight-bold mb-4">What I can do for you.</h2>
+          <h2 class="text-h3 text-primary font-weight-bold mb-4">What I can do for you.</h2>
 
           <div>
-            <!-- Vueetify expansion panel -->
-            <v-expansion-panel popout>
-              <v-expansion-panel-content
+            <v-expansion-panels variant="popout">
+              <v-expansion-panel
                 v-for="(item, i) in aboutItems"
                 :key="i"
-                class="transparent"
+                class="bg-transparent"
               >
-                <template v-slot:header>
-                  <div class="title font-weight-light">
-                    <div>{{ item.title }}</div>
-                  </div>
-                </template>
-
-                <div>
+                <v-expansion-panel-title>
+                  <div class="text-h6 font-weight-light">{{ item.title }}</div>
+                </v-expansion-panel-title>
+                <v-expansion-panel-text>
                   <v-card>
                     <v-card-text>
                       <div>{{ item.description }}</div>
                     </v-card-text>
                   </v-card>
-                </div>
-              </v-expansion-panel-content>
-            </v-expansion-panel>
+                </v-expansion-panel-text>
+              </v-expansion-panel>
+            </v-expansion-panels>
           </div>
         </section>
-      </v-flex>
+      </v-col>
 
       <!-- Second flex that covers the rest of the webpage with image -->
-      <v-flex hidden-sm-and-down md5 text-xs-right text-uppercase>
-        <div class="display-2 headline">Software Engineer</div>
-        <span class="primary--text text-italic title">Talib</span>
+      <v-col md="5" class="d-none d-md-flex flex-column text-right text-uppercase">
+        <div class="text-h3">Software Engineer</div>
+        <span class="text-primary font-italic text-h6">Talib</span>
 
         <!-- That image -->
         <v-img
+          :aspect-ratio="undefined"
           contain
           src="https://material-portfolio-dark.vuetifyjs.com/img/john.d70ed315.png"
           style="height: 100%; margin-right: -48px;"
         ></v-img>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
   </section>
 </template>
 
 
 <script>
+import abstract1 from "@/assets/abstract-1.png";
+import signature from "@/assets/signature.png";
+
 export default {
   data() {
     return {
+      abstract1,
+      signature,
       aboutMe:
         "Hi there! I'm Abu Talib. But everyone also known me as TALIB. I am a Software Engineer at BdThemes. I have over 5+ years of web developing experience in various languages. For me, sky's the limit.",
       aboutItems: [

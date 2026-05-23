@@ -1,23 +1,23 @@
 <template>
   <section id="experience">
-    <v-layout pa-5 wrap>
-      <v-flex xs12>
-        <h1 class="display-2 font-weight-bold primary--text mb-4">Down the memory lane</h1>
-      </v-flex>
-      <v-flex xs12 md9 mx-auto>
-        <v-timeline :dense="$vuetify.breakpoint.xsOnly" style="z-index:1 !important;">
-          <v-timeline-item v-for="(item,index) in places" :key="index" color="primary" large>
+    <v-row class="pa-5" no-gutters>
+      <v-col cols="12">
+        <h1 class="text-h3 font-weight-bold text-primary mb-4">Down the memory lane</h1>
+      </v-col>
+      <v-col cols="12" md="9" class="mx-auto">
+        <v-timeline :side="$vuetify.display.xs ? 'end' : undefined" :density="$vuetify.display.xs ? 'compact' : 'default'" style="z-index:1 !important;">
+          <v-timeline-item v-for="(item,index) in places" :key="index" dot-color="primary" size="large">
             <template v-slot:opposite>
               <span>{{item.year}}</span>
             </template>
             <v-card class="pa-3">
-              <h3 class="subheading font-weight-bold">{{item.title}}</h3>
+              <h3 class="text-subtitle-1 font-weight-bold">{{item.title}}</h3>
               <span>{{item.desc}}</span>
             </v-card>
           </v-timeline-item>
         </v-timeline>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
   </section>
 </template>
 

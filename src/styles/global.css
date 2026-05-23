@@ -1,0 +1,113 @@
+/* =========================================================
+   Modern design tokens
+   ========================================================= */
+:root {
+  --accent-from: #ffaa00;
+  --accent-to:   #ff5e62;
+  --accent-grad: linear-gradient(135deg, #ffaa00 0%, #ff5e62 100%);
+  --bg-base:     #0b0b10;
+  --bg-elev-1:   #15151c;
+  --bg-elev-2:   #1c1c24;
+  --border-soft: rgba(255,255,255,0.08);
+  --text-mute:   rgba(255,255,255,0.65);
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.35);
+  --shadow-glow: 0 12px 40px rgba(255, 170, 0, 0.18);
+}
+
+/* =========================================================
+   Base
+   ========================================================= */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.v-application,
+.v-application .v-main {
+  background: radial-gradient(1200px 600px at 80% -10%, rgba(255,170,0,0.08), transparent 60%),
+              radial-gradient(900px 500px at -10% 30%, rgba(255,94,98,0.06), transparent 60%),
+              var(--bg-base) !important;
+}
+
+/* Headings get the display font */
+h1, h2, h3, h4, h5, h6,
+.text-h1, .text-h2, .text-h3, .text-h4, .text-h5, .text-h6 {
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: -0.01em;
+}
+
+/* Gradient accent utility */
+.gradient-text {
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Glass surfaces */
+.glass {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-soft);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+}
+
+.glass-strong {
+  background: rgba(28,28,36,0.7);
+  border: 1px solid var(--border-soft);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 22px;
+}
+
+/* Gradient button */
+.btn-gradient.v-btn {
+  background: var(--accent-grad) !important;
+  color: #0b0b10 !important;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: var(--shadow-glow);
+}
+.btn-gradient.v-btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar         { width: 10px; height: 10px; }
+::-webkit-scrollbar-track   { background: var(--bg-base); }
+::-webkit-scrollbar-thumb   {
+  background: linear-gradient(180deg, #ffaa00, #ff5e62);
+  border-radius: 10px;
+  border: 2px solid var(--bg-base);
+}
+::-webkit-scrollbar-thumb:hover { filter: brightness(1.1); }
+
+/* Selection */
+::selection { background: rgba(255,170,0,0.35); color: #fff; }
+
+/* Section spacing */
+section { padding-top: 64px; padding-bottom: 64px; }
+
+/* Hover lift utility */
+.hover-lift {
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .35s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-soft);
+  border-color: rgba(255,170,0,0.35) !important;
+}
+
+/* Reveal on scroll (subtle fade-up) */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal { animation: fadeUp .8s ease both; }

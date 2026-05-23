@@ -1,37 +1,51 @@
 <template>
-  <v-navigation-drawer permanent theme="dark" id="mainDrawer" width="300">
-    <div class="d-flex flex-column align-center justify-center fill-height py-5 text-center">
+  <v-navigation-drawer
+    v-model="drawerOpen"
+    :permanent="$vuetify.display.mdAndUp"
+    :temporary="$vuetify.display.smAndDown"
+    theme="dark"
+    id="mainDrawer"
+    width="300"
+    color="#111"
+  >
+    <div class="drawer-inner d-flex flex-column align-center fill-height py-8 text-center">
       <!-- Developer name -->
-      <h2 class="text-h2 font-weight-black text-primary mb-2">TALIB</h2>
+      <h2 class="text-h2 font-weight-black gradient-text mb-1">TALIB</h2>
 
       <!--  Designation -->
-      <span class="text-h6 font-weight-light mb-5">WEBNINJA</span>
+      <span class="text-subtitle-2 font-weight-medium text-medium-emphasis mb-2" style="letter-spacing: 0.4em;">WEBNINJA</span>
+
+      <!-- Accent bar -->
+      <div class="accent-bar mb-8"></div>
 
       <!-- Buttons links -->
-      <div v-for="item in navItems" :key="item.title">
-        <v-btn
-          class="mb-3 text-capitalize text-subtitle-1 font-weight-medium"
-          variant="text"
+      <nav class="d-flex flex-column align-center" style="gap: 6px;">
+        <a
+          v-for="item in navItems"
+          :key="item.title"
           :href="item.link"
-        >{{ item.title }}</v-btn>
-      </div>
+          class="nav-link"
+        >
+          <span class="dot"></span>
+          {{ item.title }}
+        </a>
+      </nav>
 
       <!-- Social Icons -->
-      <div class="mt-auto">
-        <div class="my-4">
+      <div class="mt-auto pt-8">
+        <div class="d-flex justify-center" style="gap: 4px;">
           <a
-            class="mx-1"
             v-for="social in socialIcons"
             :title="social.name"
             :key="social.name"
             target="_blank"
             :href="social.link"
+            class="social-link"
           >
-            <v-btn icon variant="text">
-              <v-icon>{{ social.icon }}</v-icon>
-            </v-btn>
+            <v-icon size="22">{{ social.icon }}</v-icon>
           </a>
         </div>
+        <div class="text-caption text-medium-emphasis mt-4">© {{ new Date().getFullYear() }} Abu Talib</div>
       </div>
     </div>
   </v-navigation-drawer>
@@ -41,6 +55,7 @@
 export default {
   data() {
     return {
+      drawerOpen: true,
       navItems: [
         { title: "@Hey", link: "#" },
         { title: "About Me", link: "#about" },
@@ -73,17 +88,80 @@ export default {
 </script>
 
 <style scoped>
-#mainDrawer {
-  height: 100%;
-  margin-top: 0px;
-  max-height: calc(100% - 0px);
-  transform: translateX(0px) !important;
-  width: 300px;
-  background-color: #111;
-}
-
 a {
   text-decoration: none;
+}
+
+.drawer-inner {
+  background: linear-gradient(180deg, #0e0e14 0%, #08080c 100%);
+  border-right: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+}
+.drawer-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(400px 200px at 50% 0%, rgba(255,170,0,0.18), transparent 70%),
+    radial-gradient(300px 200px at 50% 100%, rgba(255,94,98,0.12), transparent 70%);
+  pointer-events: none;
+}
+
+.accent-bar {
+  width: 56px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #ffaa00, #ff5e62);
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: 10px;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  transition: color .25s ease, background .25s ease, transform .25s ease;
+}
+.nav-link .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  transition: background .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+.nav-link:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.04);
+  transform: translateX(4px);
+}
+.nav-link:hover .dot {
+  background: linear-gradient(135deg, #ffaa00, #ff5e62);
+  box-shadow: 0 0 12px rgba(255,170,0,0.6);
+  transform: scale(1.4);
+}
+
+.social-link {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all .25s ease;
+}
+.social-link:hover {
+  color: #ffaa00;
+  border-color: rgba(255,170,0,0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255,170,0,0.25);
 }
 
 @font-face {

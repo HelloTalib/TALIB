@@ -1,17 +1,15 @@
 <template>
   <v-app>
     <Drawer/>
-    <v-main class="hide-overflow" style="padding-left:300px" id="mainContent">
-      <div>
-        <Hero/>
-        <v-container fluid class="py-5 px-0">
-          <About/>
-          <Experience/>
-          <Skills/>
-          <Portfolio/>
-          <Contact/>
-        </v-container>
-      </div>
+    <v-main class="hide-overflow" id="mainContent">
+      <Hero/>
+      <v-container fluid class="py-5 px-0">
+        <About/>
+        <Experience/>
+        <Skills/>
+        <Portfolio/>
+        <Contact/>
+      </v-container>
     </v-main>
   </v-app>
 </template>
@@ -39,13 +37,4 @@ export default {
 
 
 <style>
-@media screen and (max-width: 960px) {
-  #mainContent {
-    padding-left: 0 !important;
-  }
-
-  #mainDrawer {
-    display: none;
-  }
-}
 </style>

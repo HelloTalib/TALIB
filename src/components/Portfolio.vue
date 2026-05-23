@@ -1,81 +1,43 @@
 <template>
   <section id="portfolio">
-    <v-row class="pa-5" no-gutters>
-      <v-img
-        :src="abstract3"
-        height="100%"
-        width="100%"
-        class="abstract-3"
-      ></v-img>
-      <h2 class="text-h3 font-weight-bold text-primary mb-4">
-        What I've Done
-      </h2>
-      <v-carousel class="elevation-0" height="600" :show-arrows="false" cycle hide-delimiter-background>
-        <v-carousel-item v-for="(item, index) in items" :key="index">
-          <v-sheet class="bg-transparent pa-5" height="100%">
-            <div class="text-center mb-5">
-              <h2 class="text-primary text-h6 font-weight-light mb-1">
-                Modern  looking html Template
-              </h2>
-              <span class="text-subtitle-1">Created for Practice😁</span>
+    <v-img :src="abstract3" cover class="abstract-3"></v-img>
+
+    <div class="pa-5 position-relative">
+      <div class="d-flex flex-wrap align-end justify-space-between mb-8" style="gap:16px">
+        <div>
+          <div class="section-eyebrow mb-2">05 — Portfolio</div>
+          <h2 class="text-h2 font-weight-bold mb-0">What I've <span class="gradient-text">done.</span></h2>
+        </div>
+        <div class="text-body-2 text-medium-emphasis" style="max-width: 420px;">
+          A selection of projects spanning frontend, WordPress, and full-stack work.
+        </div>
+      </div>
+
+      <div class="projects-grid">
+        <a
+          v-for="(item, index) in items"
+          :key="index"
+          :href="item.source"
+          target="_blank"
+          rel="noopener"
+          class="project-card hover-lift"
+        >
+          <div class="project-thumb">
+            <img :src="item.img" :alt="item.title" />
+            <div class="project-overlay">
+              <div class="overlay-inner">
+                <div class="overlay-year">{{ item.year }}</div>
+                <v-icon size="28" color="white">mdi-arrow-top-right</v-icon>
+              </div>
             </div>
-            <v-row no-gutters>
-              <v-col cols="auto">
-                <div class="mb-3" style="max-width: 500px">
-                  <h2 class="text-primary text-h6 font-weight-light mb-3">
-                    Project Details
-                  </h2>
-                  <div class="text-subtitle-1 mb-5">{{ item.desc }}</div>
-                  <h2 class="text-primary text-h6 font-weight-light">
-                    Project Info
-                  </h2>
-                  <v-list class="bg-transparent" density="compact">
-                    <v-list-item>
-                      <template v-slot:prepend>
-                        <v-icon color="primary">mdi-code-tags</v-icon>
-                      </template>
-                      <v-list-item-title class="mr-2">{{ item.title }}</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item>
-                      <template v-slot:prepend>
-                        <v-icon color="primary">mdi-access-point</v-icon>
-                      </template>
-                      <v-list-item-title class="mr-2">
-                        <a
-                          :href="item.source"
-                          target="_blank"
-                          class="text-white"
-                        >
-                          Live Demo
-                          <v-icon>mdi-link-variant</v-icon>
-                        </a>
-                      </v-list-item-title>
-                    </v-list-item>
-                    <v-list-item>
-                      <template v-slot:prepend>
-                        <v-icon color="primary">mdi-calendar</v-icon>
-                      </template>
-                      <v-list-item-title class="mr-2">{{ item.year }}</v-list-item-title>
-                    </v-list-item>
-                  </v-list>
-                </div>
-              </v-col>
-              <v-col class="d-none d-md-flex">
-                <a :href="item.source">
-                  <v-img
-                    height="350"
-                    width="500"
-                    contain
-                    :src="item.img"
-                    class="mx-auto"
-                  ></v-img>
-                </a>
-              </v-col>
-            </v-row>
-          </v-sheet>
-        </v-carousel-item>
-      </v-carousel>
-    </v-row>
+          </div>
+          <div class="project-body">
+            <div class="project-title">{{ item.title }}</div>
+            <div class="project-desc">{{ item.desc }}</div>
+          </div>
+        </a>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -206,23 +168,106 @@ export default {
 
 
 <style scoped>
-section {
-  position: relative;
-}
+section { position: relative; }
 
 .abstract-3 {
   position: absolute !important;
   left: 0;
   right: 0;
   z-index: 0 !important;
+  opacity: 0.25;
 }
 
-.abstract-3 ~ * {
-  z-index: 1 !important;
+a { text-decoration: none; color: inherit; }
+
+.section-eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #ffaa00;
 }
 
-a {
-  text-decoration: none;
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  display: block;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 18px;
+  overflow: hidden;
+  color: inherit;
+}
+
+.project-thumb {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0e0e14;
+}
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s cubic-bezier(.2,.7,.2,1), filter .6s ease;
+}
+.project-card:hover .project-thumb img {
+  transform: scale(1.06);
+  filter: saturate(1.1);
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11,11,16,0) 30%, rgba(11,11,16,0.85) 100%);
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.project-card:hover .project-overlay { opacity: 1; }
+.overlay-inner {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+}
+.overlay-year {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #ffaa00;
+  background: rgba(255,170,0,0.12);
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,170,0,0.4);
+}
+
+.project-body {
+  padding: 18px 20px 22px;
+}
+.project-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.project-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 </style>
 

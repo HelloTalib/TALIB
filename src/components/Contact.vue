@@ -2,17 +2,17 @@
   <section id="contact">
     <v-row class="pa-5" no-gutters>
       <!-- Header -->
-      <v-col cols="12">
-        <h2 class="text-h3 font-weight-bold text-primary mb-4">Let's talk</h2>
+      <v-col cols="12" class="mb-8">
+        <div class="section-eyebrow mb-2">06 — Contact</div>
+        <h2 class="text-h2 font-weight-bold">Let's <span class="gradient-text">talk.</span></h2>
       </v-col>
 
-      <!-- Sub desc -->
-      <v-col cols="12" md="5" class="mb-4 pr-md-5">
-        <h2 class="text-primary text-h6 font-weight-light text-uppercase mb-2">What can I do for you?</h2>
-        <div class="text-subtitle-1 mb-5">
-          Have anything that you would like to say to me? Well you are more than welcome to do so. Please fill out the form below and hit that send button or else get in touch using the details given along with the form.
+      <!-- Form -->
+      <v-col cols="12" md="7" class="pr-md-8">
+        <div class="glass pa-6 pa-md-8">
+        <div class="text-body-2 text-medium-emphasis mb-6">
+          Have anything you'd like to say? Fill out the form and I'll get back to you, or use the details on the right.
         </div>
-        <h2 class="text-primary text-h6 font-weight-light text-uppercase mb-3">Send me a message</h2>
         <v-form
           ref="form"
           v-model="formIsValid"
@@ -78,57 +78,48 @@
 
             <v-col cols="12" class="text-right">
               <v-btn
-                color="primary"
+                class="btn-gradient"
+                size="large"
                 type="submit"
                 :disabled="!formIsValid"
               >
-                Send
-                <v-icon class="ml-2">mdi-send</v-icon>
+                Send Message
+                <v-icon end>mdi-send</v-icon>
               </v-btn>
             </v-col>
           </v-row>
         </v-form>
+        </div>
       </v-col>
 
       <!-- The contact info block -->
-      <v-col cols="12" md="3" class="text-left">
-        <h2 class="text-primary text-h6 font-weight-light text-uppercase">Social Contacts</h2>
+      <v-col cols="12" md="5" class="mt-8 mt-md-0">
+        <div class="glass pa-6 pa-md-8 contact-info">
+          <h3 class="block-title mb-5">Get in touch</h3>
+          <div v-for="(det, i) in contactDetails" :key="i" class="contact-row">
+            <div class="contact-icon">
+              <v-icon size="20" color="primary">{{ det.icon }}</v-icon>
+            </div>
+            <div>
+              <div class="contact-label">{{ det.title }}</div>
+              <div class="contact-value">{{ det.val }}</div>
+            </div>
+          </div>
 
-        <!-- Social Links -->
-        <div class="my-4">
-          <a
-            class="mx-2"
-            v-for="(icon, i) in socialIcons"
-            :title="icon.name"
-            :key="i"
-            target="_blank"
-            :href="icon.link"
-          >
-            <v-btn icon variant="text">
-              <v-icon>{{ icon.icon }}</v-icon>
-            </v-btn>
-          </a>
+          <div class="mt-6 mb-2 text-overline" style="letter-spacing: 0.3em;">FOLLOW</div>
+          <div class="d-flex" style="gap: 10px;">
+            <a
+              v-for="(icon, i) in socialIcons"
+              :title="icon.name"
+              :key="i"
+              target="_blank"
+              :href="icon.link"
+              class="social-link"
+            >
+              <v-icon size="20">{{ icon.icon }}</v-icon>
+            </a>
+          </div>
         </div>
-
-        <!-- The list with details -->
-        <v-list class="bg-transparent" lines="three">
-          <v-list-item v-for="(det, i) in contactDetails" :key="i">
-            <template v-slot:prepend>
-              <v-icon color="primary" class="mr-5" style="font-size: 48px;">{{ det.icon }}</v-icon>
-            </template>
-            <v-list-item-title class="mr-2 text-primary">{{ det.title }}</v-list-item-title>
-            <v-list-item-subtitle>{{ det.val }}</v-list-item-subtitle>
-          </v-list-item>
-        </v-list>
-      </v-col>
-
-      <!-- The image block -->
-      <v-col cols="12" md="4">
-        <v-img
-          contain
-          style="top: 95px;"
-          src="https://material-portfolio-dark.vuetifyjs.com/img/john-alt.7fef353c.png"
-        ></v-img>
       </v-col>
     </v-row>
   </section>
@@ -217,7 +208,7 @@ export default {
         } else {
           this.errorAlert = true;
         }
-      } catch (e) {
+      } catch {
         this.infoAlert = false;
         this.errorAlert = true;
       } finally {
@@ -234,11 +225,79 @@ export default {
 </script>
 
 <style scoped>
-section {
-  position: relative;
+section { position: relative; }
+
+a { text-decoration: none; }
+
+.section-eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #ffaa00;
 }
 
-a {
-  text-decoration: none;
+.block-title {
+  display: inline-block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255,170,0,0.08);
+  border: 1px solid rgba(255,170,0,0.2);
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+}
+.contact-row + .contact-row { border-top: 1px solid rgba(255,255,255,0.06); }
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,170,0,0.1);
+  border: 1px solid rgba(255,170,0,0.25);
+  border-radius: 12px;
+}
+.contact-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.contact-value {
+  font-size: 14px;
+  color: rgba(255,255,255,0.92);
+  margin-top: 2px;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  transition: all .25s ease;
+}
+.social-link:hover {
+  color: #ffaa00;
+  border-color: rgba(255,170,0,0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255,170,0,0.25);
 }
 </style>

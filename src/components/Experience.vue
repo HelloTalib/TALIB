@@ -1,19 +1,30 @@
 <template>
   <section id="experience">
     <v-row class="pa-5" no-gutters>
-      <v-col cols="12">
-        <h1 class="text-h3 font-weight-bold text-primary mb-4">Down the memory lane</h1>
+      <v-col cols="12" class="mb-8">
+        <div class="section-eyebrow mb-2">03 — Journey</div>
+        <h2 class="text-h2 font-weight-bold">Down the <span class="gradient-text">memory lane.</span></h2>
       </v-col>
-      <v-col cols="12" md="9" class="mx-auto">
-        <v-timeline :side="$vuetify.display.xs ? 'end' : undefined" :density="$vuetify.display.xs ? 'compact' : 'default'" style="z-index:1 !important;">
-          <v-timeline-item v-for="(item,index) in places" :key="index" dot-color="primary" size="large">
+      <v-col cols="12" md="10" class="mx-auto">
+        <v-timeline
+          :side="$vuetify.display.smAndDown ? 'end' : undefined"
+          :density="$vuetify.display.smAndDown ? 'compact' : 'default'"
+          line-color="rgba(255,170,0,0.25)"
+        >
+          <v-timeline-item
+            v-for="(item,index) in places"
+            :key="index"
+            dot-color="primary"
+            size="small"
+            fill-dot
+          >
             <template v-slot:opposite>
-              <span>{{item.year}}</span>
+              <div class="year-badge">{{ item.year }}</div>
             </template>
-            <v-card class="pa-3">
-              <h3 class="text-subtitle-1 font-weight-bold">{{item.title}}</h3>
-              <span>{{item.desc}}</span>
-            </v-card>
+            <div class="timeline-card hover-lift">
+              <h3 class="text-h6 font-weight-semibold mb-2">{{ item.title }}</h3>
+              <p class="text-body-2 text-medium-emphasis mb-0">{{ item.desc }}</p>
+            </div>
           </v-timeline-item>
         </v-timeline>
       </v-col>
@@ -87,7 +98,34 @@ export default {
 </script>
 
 <style scoped>
-section {
-  position: relative;
+section { position: relative; }
+
+.section-eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #ffaa00;
+}
+
+.year-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #ffaa00;
+  background: rgba(255,170,0,0.08);
+  border: 1px solid rgba(255,170,0,0.25);
+}
+
+.timeline-card {
+  padding: 18px 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
 }
 </style>

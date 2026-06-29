@@ -141,36 +141,48 @@ export default {
       ],
       skills: [
         {
-          skillName: "Web Design",
+          skillName: "WordPress Ecosystem",
           skillSets: [
-            { name: "HTML", exp: 5 },
-            { name: "CSS", exp: 4 },
-            { name: "BootsTrap", exp: 5 },
-            { name: "UIkit", exp: 5 },
-            { name: "MeterilizeCSS", exp: 4 },
-            { name: "SASS", exp: 5 },
-            { name: "JavaScript", exp: 4 },
-            { name: "jQuery", exp: 5 },
-            { name: "AJAX", exp: 4 },
-            { name: "VueJs", exp: 5 },
-            { name: "VuetifyJs", exp: 4 },
-            { name: "ReactJs", exp: 3 },
+            { name: "Plugin Development", exp: 5 },
+            { name: "Gutenberg Blocks", exp: 5 },
+            { name: "Elementor Addons", exp: 5 },
+            { name: "WordPress Hooks/APIs", exp: 5 },
+            { name: "WooCommerce", exp: 4 },
+            { name: "REST API", exp: 4 },
+            { name: "block.json / FSE", exp: 4 },
           ]
         },
         {
-          skillName: "Web Development & Others",
+          skillName: "Frontend",
           skillSets: [
-            { name: "PHP", exp: 4 },
-            { name: "MYSQL", exp: 3 },
-            { name: "WordPress", exp: 4 },
-            { name: "Elementor", exp: 5 },
-            { name: "WooCommerce", exp: 5 },
-            { name: "Gutenburg", exp: 3 },
-            { name: "ExpressJs", exp: 3 },
+            { name: "HTML5", exp: 5 },
+            { name: "CSS3 / SCSS", exp: 5 },
+            { name: "JavaScript ES6+", exp: 5 },
+            { name: "React.js", exp: 4 },
+            { name: "Vue.js", exp: 5 },
+            { name: "jQuery", exp: 5 },
+            { name: "TailwindCSS", exp: 4 },
+          ]
+        },
+        {
+          skillName: "Backend & Database",
+          skillSets: [
+            { name: "PHP 8.x", exp: 5 },
+            { name: "MySQL", exp: 4 },
+            { name: "Node.js", exp: 3 },
+            { name: "Express.js", exp: 3 },
             { name: "MongoDB", exp: 3 },
-            { name: "NodeJs", exp: 3 },
             { name: "Firebase", exp: 4 },
-            { name: "Github", exp: 5 },
+          ]
+        },
+        {
+          skillName: "Tools & Workflow",
+          skillSets: [
+            { name: "Git / GitHub", exp: 5 },
+            { name: "Webpack / Vite", exp: 4 },
+            { name: "npm / Composer", exp: 5 },
+            { name: "Figma", exp: 3 },
+            { name: "Linux CLI", exp: 4 },
           ]
         }
       ]

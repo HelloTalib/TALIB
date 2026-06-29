@@ -25,7 +25,7 @@
         >
           <div class="card-shine" aria-hidden="true"></div>
           <div class="project-thumb">
-            <img :src="items[0].img" :alt="items[0].title" loading="lazy" />
+            <img :src="items[0].img" :alt="items[0].title" loading="lazy" @error="onImgError" />
             <div class="project-overlay">
               <span class="overlay-year">{{ items[0].year }}</span>
               <span class="overlay-arrow" aria-hidden="true">
@@ -55,7 +55,7 @@
           >
             <div class="card-shine" aria-hidden="true"></div>
             <div class="project-thumb">
-              <img :src="item.img" :alt="item.title" loading="lazy" />
+              <img :src="item.img" :alt="item.title" loading="lazy" @error="onImgError" />
               <div class="project-overlay">
                 <span class="overlay-year">{{ item.year }}</span>
                 <span class="overlay-arrow" aria-hidden="true">
@@ -76,19 +76,14 @@
 
 <script>
 import abstract3 from "@/assets/abstract-3.png";
-import demoFlorence from "@/assets/portfolio/demo-florence.png";
-import demoBrooklyn from "@/assets/portfolio/demo-brooklyn.png";
-import demoPeakShop from "@/assets/portfolio/demo-peak-shop.png";
-import demoOxpitan from "@/assets/portfolio/demo-oxpitan.png";
 import personalPortfolio from "@/assets/portfolio/personal-portfolio.png";
-import demoBalou from "@/assets/portfolio/demo-balou.png";
-import demoYard from "@/assets/portfolio/demo-yard.png";
-import demoCraft from "@/assets/portfolio/demo-craft.png";
-import demoCreativeHub from "@/assets/portfolio/demo-creative-hub.png";
-import demoDesignBites from "@/assets/portfolio/demo-design-bites.png";
 
 export default {
   methods: {
+    onImgError(e) {
+      e.target.style.display = 'none';
+      e.target.closest('.project-thumb').classList.add('thumb-empty');
+    },
     onCardTilt(e) {
       const card = e.currentTarget;
       const rect = card.getBoundingClientRect();
@@ -112,74 +107,60 @@ export default {
       abstract3,
       items: [
         {
-          desc: "This is a Beauty Parlour Website. Uses html, CSS, SASS &; UIKIT Framework to Design this static website. This website is really outstanding to look😍.",
-          title: "Parlour Website",
-          source: "https://floreence.netlify.app/",
-          year: "2019",
-          img: demoFlorence,
+          title: "ZoloBlocks — Gutenberg Page Builder",
+          desc: "A full-featured Gutenberg page builder & block toolkit for WordPress. Ships 40+ advanced blocks with animations, custom CSS controls, and a visual site builder. Rated 5.0 ★ with 1,000+ active installs on WordPress.org.",
+          source: "https://wordpress.org/plugins/zoloblocks/",
+          year: "2023",
+          img: "https://ps.w.org/zoloblocks/assets/banner-772x250.jpg",
         },
         {
-          desc: "This is an Agency Website. Uses html, CSS, SASS &; UIKIT Framework to Design this static website. This was just a project and was coded by me in 7th Grade.",
-          title: "Agency Website",
-          source: "https://brooklynn.netlify.app/",
-          year: "2019",
-          img: demoBrooklyn,
+          title: "Live Copy Paste for Elementor",
+          desc: "Cross-domain copy-paste & full-page duplicator for Elementor. Lets designers copy any widget, section, or page across different WordPress domains in one click. 7,000+ active installs, rated 4.3 ★.",
+          source: "https://wordpress.org/plugins/live-copy-paste/",
+          year: "2022",
+          img: "https://ps.w.org/live-copy-paste/assets/banner-772x250.jpg",
         },
         {
-          desc: "This is an Online Store Project. Uses html, CSS, SASS &; UIKIT Framework to Design this static website",
-          title: "Online Store",
-          source: "https://peak-shop.netlify.app/",
-          year: "2019",
-          img: demoPeakShop,
+          title: "Element Pack — Elementor Addons",
+          desc: "BdThemes flagship Elementor addon with 280+ widgets, templates, and advanced modules including Mega Menu, Dynamic Grid, Horizontal Scroller, and Context Menu. One of the most powerful Elementor extensions available.",
+          source: "https://wordpress.org/plugins/bdthemes-element-pack-lite/",
+          year: "2021",
+          img: "https://ps.w.org/bdthemes-element-pack-lite/assets/banner-772x250.jpg",
         },
         {
-          desc: "This is a Non-Profit Organization Website. I use html, CSS, SASS &; UIKIT Framework to Design this static website",
-          title: "Non-Profit Website",
-          source: "https://oxpitan.netlify.app/",
-          year: "2019",
-          img: demoOxpitan,
+          title: "Instant AI Image Generator",
+          desc: "AI-powered image creation and import tool for WordPress. Generate images from text prompts and inject them directly into the Media Library. 1,000+ active installs on WordPress.org.",
+          source: "https://wordpress.org/plugins/ai-image/",
+          year: "2024",
+          img: "https://ps.w.org/ai-image/assets/banner-772x250.jpg",
         },
         {
-          desc: "This is My Personal Portfolio Website. I used html, CSS, SASS VueJs, VuetifyJs ect. to develop this awesome looking protfolio website;",
-          title: "Portfolio Website",
+          title: "Prime Slider — Elementor Addons",
+          desc: "Premium-grade slider addon for Elementor featuring 50+ unique slider styles and advanced animation options. Another BdThemes product with a large global install base.",
+          source: "https://wordpress.org/plugins/bdthemes-prime-slider-lite/",
+          year: "2022",
+          img: "https://ps.w.org/bdthemes-prime-slider-lite/assets/banner-772x250.jpg",
+        },
+        {
+          title: "Smart Admin Assistant",
+          desc: "Dashboard enhancements and admin workflow toolkit for WordPress. Adds productivity tools, quick-action shortcuts, and site health insights directly into the WP Admin. 300+ active installs, rated 3.3 ★.",
+          source: "https://wordpress.org/plugins/smart-admin-assistant/",
+          year: "2023",
+          img: "https://ps.w.org/smart-admin-assistant/assets/banner-772x250.jpg",
+        },
+        {
+          title: "Ultimate Post Kit — Elementor",
+          desc: "Comprehensive blog and post display addon for Elementor with 60+ widgets covering grids, carousels, timelines, and filterable post layouts. Used by tens of thousands of WordPress sites.",
+          source: "https://wordpress.org/plugins/ultimate-post-kit/",
+          year: "2021",
+          img: "https://ps.w.org/ultimate-post-kit/assets/banner-772x250.jpg",
+        },
+        {
+          title: "Personal Portfolio Website",
+          desc: "This very portfolio — built with Vue 3, Vuetify, custom CSS animations, and a dark-first design system. Features scroll-triggered animations, 3D card tilt, custom cursor, and a fully responsive layout.",
           source: "https://talib.netlify.app/",
-          year: "2019",
+          year: "2024",
           img: personalPortfolio,
-        },
-        {
-          desc: "This is kids wears and accesories Website. I used html, CSS, SASS to develop this website;",
-          title: "Kids Website",
-          source: "https://babiees.netlify.app/",
-          year: "2019",
-          img: demoBalou,
-        },
-        {
-          desc: "This is an interior design Website. I used html, CSS, SASS to develop this awesome looking interior website;",
-          title: "Interior Website",
-          source: "https://yaard.netlify.app/",
-          year: "2019",
-          img: demoYard,
-        },
-        {
-          desc: "This is a Handcraft design Website. I used html, CSS, SASS to develop this awesome looking handcraft website;",
-          title: "Craft Website",
-          source: "https://crafti.netlify.app/",
-          year: "2019",
-          img: demoCraft,
-        },
-        {
-          desc: "This is a Creative minimal looking Website. I used html, CSS, SASS to develop this awesome looking handcraft website;",
-          title: "Creative Website",
-          source: "https://creativehub.netlify.app/",
-          year: "2019",
-          img: demoCreativeHub,
-        },
-        {
-          desc: "This is a Blog Website. I used html, CSS, SASS to develop this awesome looking blog resources website;",
-          title: "Blog Website",
-          source: "https://designbites.netlify.app/",
-          year: "2019",
-          img: demoDesignBites,
         },
         // {
         //   title: "Dashboard",
@@ -292,6 +273,29 @@ a { text-decoration: none; color: inherit; }
   background: var(--color-surface);
 }
 .project-featured .project-thumb { aspect-ratio: 16 / 7; }
+
+/* Fallback when banner image fails */
+.project-thumb.thumb-empty {
+  background: linear-gradient(135deg,
+    var(--color-surface-2) 0%,
+    rgba(110, 231, 183, 0.06) 50%,
+    var(--color-surface) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.project-thumb.thumb-empty::before {
+  content: 'W';
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 800;
+  color: rgba(110, 231, 183, 0.12);
+  letter-spacing: -0.02em;
+  user-select: none;
+  pointer-events: none;
+}
+.project-thumb.thumb-empty .project-overlay { display: none; }
 
 .project-thumb img {
   width: 100%;

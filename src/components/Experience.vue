@@ -37,58 +37,34 @@ export default {
     return {
       places: [
         {
-          title: "Year 2023 and forward!",
-          desc:
-            "As a Software Engineer of BDTHEMES, I'm contribute to Develop bdthemes all products such as ElementPack, PrimeSlider, Ultimate Post kit, Ultimate Store Kit, Live Copy Paste plugins and trying to switch new technology..",
-          year: "2023",
+          title: "Senior Software Engineer — BdThemes",
+          desc: "Leading Gutenberg product development: shipped ZoloBlocks (5.0 ★, 1,000+ installs) — a full page-builder toolkit, and Instant AI Image Generator (1,000+ installs). Driving architecture decisions across the BdThemes plugin ecosystem.",
+          year: "2024–Now",
         },
         {
-          title: "Year 2022",
-          desc:
-            "As a Software Engineer of BDTHEMES, I'm contribute to Develop bdthemes all products. especially ElementPack. I have added more stunning features for example Mega Menu, Live Copy Paste, Context Menu, Dynamic Grid/Carousel, Horizontal Scroller, tile scroll, animated background, cursor effects, reveal effects and so on..😊",
-          year: "2022",
+          title: "Plugin Developer — BdThemes",
+          desc: "Developed Live Copy Paste for Elementor — a cross-domain copy-paste & page duplicator now used by 7,000+ WordPress sites (4.3 ★). Added major features to Element Pack: Mega Menu, Context Menu, Dynamic Grid, Horizontal Scroller, cursor effects, and animated backgrounds.",
+          year: "2022–2023",
         },
         {
-          title: "Year 2021",
-          desc:
-            "I got a job as a Software Engineer ‍of BdThemes. Here my primary task is Contribute to Develop WordPress Plugins/Elementor Addons",
+          title: "Software Engineer — BdThemes",
+          desc: "Joined BdThemes to build and maintain WordPress plugins. Contributed to Element Pack Lite, Prime Slider, Ultimate Post Kit, and Ultimate Store Kit — collectively installed on hundreds of thousands of WordPress sites worldwide.",
           year: "2021",
         },
         {
-          title: "Mastering WordPress and Practice...",
-          desc:
-            "Entered mainstream development and I almost write code daily till date. Some of my works are used by thousands of people on a daily basis. Check my GitHub repo.",
-          year: "2020",
+          title: "WordPress & Full-Stack Development",
+          desc: "Went deep into WordPress core, PHP, and REST APIs. Delivered 30+ themes and custom plugin solutions for clients on Fiverr and Upwork. Work began reaching thousands of daily users on production sites.",
+          year: "2019–2020",
         },
         {
-          title: "Elementor Addons Development",
-          desc:
-            "Created 20+ elementor widget just for practice purpose. have not services this category any marketplace yet.",
-          year: "2019",
+          title: "Elementor Addon & Theme Development",
+          desc: "Built 20+ custom Elementor widgets and WordPress themes for global clients. Developed WooCommerce stores and delivered full agency websites using Elementor, custom PHP, and advanced CSS animations.",
+          year: "2018–2019",
         },
         {
-          title: "WordPress Theme Development",
-          desc:
-            "I Developed 30+ WordPress theme for my clients on the online marketplace such as fiverr, upwork, etc.",
-          year: "2019",
-        },
-        {
-          title: "WordPress Theme Customization",
-          desc:
-            "Created Agency Website for my first Client on upwork marketplace. I was using WordPress and Elementor with some awesome WP Plugins for completed these project.",
-          year: "2018",
-        },
-        {
-          title: "Created own API",
-          desc:
-            "Created my first REST API for my own BLOG website. for Front End, I used html5, css3, Vuejs with Vuetify Library. and for Back-End, I used Node Api with MongoDB",
-          year: "2017",
-        },
-        {
-          title: "Front-End Development",
-          desc:
-            "My first Job At Fiverr, I created modern website for my client using html, css, scss, VueJs and VuetifyJs. yeah! Client was fully satisfied.",
-          year: "2017",
+          title: "Front-End & Freelance Beginnings",
+          desc: "Started freelancing on Fiverr building pixel-perfect websites with HTML, CSS, SCSS, Vue.js, and Vuetify. Built my first REST API (Node.js + MongoDB + Vue.js) and began learning the full web development stack.",
+          year: "2017–2018",
         },
       ],
     };

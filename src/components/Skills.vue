@@ -1,71 +1,72 @@
 <template>
   <section id="skills">
-    <v-img :src="abstract2" height="711" width="778" class="abstract-2"></v-img>
-    <v-row class="pa-5 position-relative" no-gutters>
-      <v-col cols="12" class="mb-10">
-        <div class="d-flex flex-wrap align-end justify-space-between" style="gap:24px">
-          <div>
-            <div class="section-eyebrow mb-2">04 — Expertise</div>
-            <h2 class="text-h2 font-weight-bold">What <span class="gradient-text">I know.</span></h2>
-          </div>
-          <div class="cv-cta glass pa-5">
-            <p class="text-body-2 text-medium-emphasis mb-3 font-italic">
-              Need a more professional description of me? Well, here's exactly that 😊
-            </p>
-            <v-btn
-              class="btn-gradient"
-              href="https://drive.google.com/file/d/1fv4O3MIylENtRadVWQRKjVlqe0V1uF5z/view?usp=sharing"
-              target="_blank"
-            >
-              <v-icon start>mdi-download</v-icon>
-              Download CV
-            </v-btn>
-          </div>
+    <div class="section-wrap">
+      <!-- Header row -->
+      <div class="skills-header fade-up">
+        <div>
+          <div class="section-eyebrow">04 — Expertise</div>
+          <h2 class="section-heading">What <span class="gradient-text">I know.</span></h2>
         </div>
-      </v-col>
-
-      <!-- Education -->
-      <v-col cols="12" md="5" class="pr-md-6">
-        <h3 class="block-title mb-5">
-          <v-icon size="20" color="primary" class="mr-2">mdi-school-outline</v-icon>
-          My Education
-        </h3>
-        <div class="edu-track">
-          <div v-for="(edu,index) in educations" :key="index" class="edu-card hover-lift">
-            <span class="edu-duration">{{ edu.duration }}</span>
-            <div class="edu-stream gradient-text">{{ edu.stream }}</div>
-            <div class="edu-name">{{ edu.name }}</div>
-            <div class="edu-alt">{{ edu.alt }}</div>
-          </div>
+        <div class="cv-cta glass">
+          <p class="cv-caption">Need a full professional profile? Here it is 😊</p>
+          <a
+            href="https://drive.google.com/file/d/1fv4O3MIylENtRadVWQRKjVlqe0V1uF5z/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-cv"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download CV
+          </a>
         </div>
-      </v-col>
+      </div>
 
-      <!-- Skills -->
-      <v-col cols="12" md="7" class="pl-md-6 mt-8 mt-md-0">
-        <h3 class="block-title mb-5">
-          <v-icon size="20" color="primary" class="mr-2">mdi-code-tags</v-icon>
-          My Skills
-        </h3>
-        <div class="mb-8" v-for="(skill, index) in skills" :key="index">
-          <h4 class="skill-group-title mb-4">{{ skill.skillName }}</h4>
-          <div class="skills-grid">
+      <!-- Two-column: Education + Skills -->
+      <div class="skills-grid-layout">
+        <!-- Education -->
+        <div class="fade-up delay-1">
+          <h3 class="block-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            Education
+          </h3>
+          <div class="edu-track">
             <div
-              v-for="(currentSkill, sIndex) in skill.skillSets"
-              :key="sIndex"
-              class="skill-row"
+              v-for="(edu, index) in educations"
+              :key="index"
+              class="edu-card hover-lift"
             >
-              <div class="d-flex align-center justify-space-between mb-1">
-                <span class="skill-name">{{ currentSkill.name }}</span>
-                <span class="skill-pct">{{ currentSkill.exp * 20 }}%</span>
-              </div>
-              <div class="bar">
-                <div class="bar-fill" :style="{ width: (currentSkill.exp * 20) + '%' }"></div>
-              </div>
+              <span class="edu-duration">{{ edu.duration }}</span>
+              <div class="edu-stream gradient-text">{{ edu.stream }}</div>
+              <div class="edu-name">{{ edu.name }}</div>
+              <div class="edu-alt">{{ edu.alt }}</div>
             </div>
           </div>
         </div>
-      </v-col>
-    </v-row>
+
+        <!-- Skills -->
+        <div class="fade-up delay-2">
+          <h3 class="block-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            Skills
+          </h3>
+          <div
+            v-for="(skill, index) in skills"
+            :key="index"
+            class="skill-group"
+          >
+            <h4 class="skill-group-title">{{ skill.skillName }}</h4>
+            <div class="skill-tags">
+              <span
+                v-for="(s, si) in skill.skillSets"
+                :key="si"
+                class="skill-tag"
+                :data-level="s.exp"
+              >{{ s.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -77,7 +78,8 @@ export default {
     return {
       abstract2,
       educations: [
-               {  name: "Asian University of Bangladesh",
+        {
+          name: "Asian University of Bangladesh",
           alt: "CSE",
           stream: "Computer Science and Engineering",
           duration: "2017-2021"
@@ -112,8 +114,6 @@ export default {
         //   stream: "Bachelor of Social Science",
         //   duration: "2017-Present"
         // },
-
-
         {
           name: "Zirabo Dewan Idris College",
           alt: "General Subject",
@@ -179,141 +179,177 @@ export default {
 };
 </script>
 
-
 <style scoped>
 section { position: relative; }
 
-.abstract-2 {
-  position: absolute !important;
-  right: 0;
-  top: -128px;
-  z-index: 0 !important;
-  opacity: 0.3;
+/* ── Header ── */
+.skills-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 72px;
+}
+.section-heading {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0;
 }
 
-.section-eyebrow {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #ffaa00;
-}
-
+/* ── CV CTA ── */
 .cv-cta {
-  max-width: 360px;
+  padding: 20px 24px;
   text-align: center;
+  max-width: 320px;
 }
-
-.block-title {
+.cv-caption {
+  font-size: 13px;
+  color: var(--color-muted);
+  font-style: italic;
+  margin: 0 0 14px 0;
+}
+.btn-cv {
   display: inline-flex;
   align-items: center;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px;
+  gap: 8px;
+  padding: 10px 22px;
+  background: var(--color-accent);
+  color: #0A0A0F;
   font-weight: 600;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.85);
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: rgba(255,170,0,0.08);
-  border: 1px solid rgba(255,170,0,0.2);
+  font-size: 13px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: filter var(--transition-base), transform var(--transition-base);
+  will-change: transform;
+}
+.btn-cv:hover { filter: brightness(1.06); transform: translateY(-1px); }
+
+/* ── Two-col layout ── */
+.skills-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
 }
 
-/* Education */
+/* ── Block labels ── */
+.block-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-accent-border);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 24px;
+  color: var(--color-accent);
+}
+
+/* ── Education ── */
 .edu-track {
   position: relative;
-  padding-left: 18px;
-  border-left: 2px solid rgba(255,170,0,0.25);
+  padding-left: 20px;
+  border-left: 1px solid var(--color-accent-border);
 }
 .edu-card {
   position: relative;
-  padding: 16px 18px;
-  margin-bottom: 14px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 14px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
 }
 .edu-card::before {
   content: "";
   position: absolute;
   left: -27px;
-  top: 22px;
-  width: 14px;
-  height: 14px;
+  top: 18px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #ffaa00, #ff5e62);
-  border: 3px solid var(--bg-base, #0b0b10);
-  box-shadow: 0 0 0 2px rgba(255,170,0,0.4);
+  background: var(--color-accent);
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 0 0 2px var(--color-accent-border);
 }
 .edu-duration {
   display: inline-block;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: #ffaa00;
-  background: rgba(255,170,0,0.08);
-  padding: 3px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+  padding: 3px 9px;
   border-radius: 999px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .edu-stream {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 16px;
+  font-family: var(--font-display);
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.3;
 }
 .edu-name {
-  font-size: 14px;
-  color: rgba(255,255,255,0.9);
-  margin-top: 4px;
+  font-size: 13px;
+  color: rgba(226, 232, 240, 0.85);
+  margin-top: 3px;
 }
 .edu-alt {
-  font-size: 12px;
-  color: rgba(255,255,255,0.55);
+  font-size: 11px;
+  color: var(--color-muted);
   margin-top: 2px;
 }
 
-/* Skills */
+/* ── Skills as Tags ── */
+.skill-group { margin-bottom: 32px; }
 .skill-group-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
-}
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 18px 28px;
-}
-@media (max-width: 600px) {
-  .skills-grid { grid-template-columns: 1fr; }
-}
-.skill-name {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
   font-weight: 500;
-  color: rgba(255,255,255,0.92);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 14px;
 }
-.skill-pct {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(255,170,0,0.9);
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
-.bar {
-  height: 6px;
+.skill-tag {
+  display: inline-block;
+  padding: 5px 14px;
+  border: 1px solid var(--color-accent-border);
   border-radius: 999px;
-  background: rgba(255,255,255,0.06);
-  overflow: hidden;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text);
+  background: var(--color-accent-dim);
+  transition: background var(--transition-base), color var(--transition-base), border-color var(--transition-base);
+  cursor: default;
 }
-.bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #ffaa00, #ff5e62);
-  border-radius: 999px;
-  transition: width .8s cubic-bezier(.2,.7,.2,1);
+.skill-tag:hover,
+.skill-tag[data-level="5"] {
+  background: rgba(110, 231, 183, 0.18);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .skills-grid-layout { gap: 40px; }
+}
+@media (max-width: 768px) {
+  .skills-grid-layout { grid-template-columns: 1fr; gap: 48px; }
+  .skills-header { flex-direction: column; align-items: flex-start; }
+  .cv-cta { max-width: 100%; }
 }
 </style>

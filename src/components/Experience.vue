@@ -1,34 +1,33 @@
 <template>
   <section id="experience">
-    <v-row class="pa-5" no-gutters>
-      <v-col cols="12" class="mb-8">
-        <div class="section-eyebrow mb-2">03 — Journey</div>
-        <h2 class="text-h2 font-weight-bold">Down the <span class="gradient-text">memory lane.</span></h2>
-      </v-col>
-      <v-col cols="12" md="10" class="mx-auto">
-        <v-timeline
-          :side="$vuetify.display.smAndDown ? 'end' : undefined"
-          :density="$vuetify.display.smAndDown ? 'compact' : 'default'"
-          line-color="rgba(255,170,0,0.25)"
+    <div class="section-wrap">
+      <div class="fade-up">
+        <div class="section-eyebrow">03 — Journey</div>
+        <h2 class="section-heading">Down the <span class="gradient-text">memory lane.</span></h2>
+      </div>
+
+      <div class="timeline">
+        <div
+          v-for="(item, index) in places"
+          :key="index"
+          class="timeline-entry fade-up"
+          :class="'delay-' + Math.min(index + 1, 5)"
         >
-          <v-timeline-item
-            v-for="(item,index) in places"
-            :key="index"
-            dot-color="primary"
-            size="small"
-            fill-dot
-          >
-            <template v-slot:opposite>
-              <div class="year-badge">{{ item.year }}</div>
-            </template>
+          <!-- Accent dot + vertical line handled by CSS -->
+          <div class="timeline-marker" aria-hidden="true">
+            <span class="marker-dot"></span>
+          </div>
+
+          <div class="timeline-body">
+            <div class="timeline-year">{{ item.year }}</div>
             <div class="timeline-card hover-lift">
-              <h3 class="text-h6 font-weight-semibold mb-2">{{ item.title }}</h3>
-              <p class="text-body-2 text-medium-emphasis mb-0">{{ item.desc }}</p>
+              <h3 class="entry-title">{{ item.title }}</h3>
+              <p class="entry-desc">{{ item.desc }}</p>
             </div>
-          </v-timeline-item>
-        </v-timeline>
-      </v-col>
-    </v-row>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -100,32 +99,108 @@ export default {
 <style scoped>
 section { position: relative; }
 
-.section-eyebrow {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #ffaa00;
+.section-heading {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 64px;
 }
 
-.year-badge {
+/* ── Timeline shell ── */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+  max-width: 760px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-accent-border) 0%,
+    transparent 100%
+  );
+}
+
+/* ── Entry ── */
+.timeline-entry {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  padding-bottom: 36px;
+}
+.timeline-entry:last-child { padding-bottom: 0; }
+
+/* ── Marker ── */
+.timeline-marker {
+  position: absolute;
+  left: -32px;
+  top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+}
+.marker-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.18), 0 0 12px rgba(110, 231, 183, 0.35);
+  flex-shrink: 0;
+}
+
+/* ── Body ── */
+.timeline-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.timeline-year {
   display: inline-block;
-  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-accent-border);
+  padding: 4px 12px;
   border-radius: 999px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  color: #ffaa00;
-  background: rgba(255,170,0,0.08);
-  border: 1px solid rgba(255,170,0,0.25);
+  width: fit-content;
 }
 
+/* ── Card ── */
 .timeline-card {
-  padding: 18px 20px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 14px;
-  backdrop-filter: blur(8px);
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.entry-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--color-text);
+}
+.entry-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .timeline { padding-left: 24px; }
+  .timeline-marker { left: -24px; }
+  .section-heading { margin-bottom: 40px; }
 }
 </style>

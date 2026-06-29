@@ -1,106 +1,102 @@
 <template>
   <section id="about">
-    <!-- Background decorative image, absolutely positioned -->
-    <v-img :src="abstract1" width="613" height="528" class="abstract-1"></v-img>
-    <v-row class="pa-5 position-relative" id="about-me" no-gutters>
-      <!-- The basic info page -->
-      <v-col cols="12" md="7">
-        <!-- Section 1, Who I am -->
-        <section>
-          <div class="section-eyebrow mb-2">01 — Introduction</div>
-          <h2 class="text-h2 font-weight-bold mb-6">Who <span class="gradient-text">I am.</span></h2>
-          <v-row justify="space-between">
-            <!-- Info and signature -->
-            <v-col cols="12" md="7">
-              <div class="text-subtitle-1 mb-5">
-                <p>{{ aboutMe }}</p>
-
-                <!--  The Image -->
-                <v-img :src="signature" width="150" class="ml-auto"></v-img>
+    <div class="section-wrap">
+      <div class="about-grid">
+        <!-- Left: visual column -->
+        <aside class="about-left fade-up">
+          <!-- Stats -->
+          <div class="stats-grid" ref="statsGrid">
+            <div
+              v-for="(stat, i) in stats"
+              :key="i"
+              class="stat-card glass"
+            >
+              <div class="stat-num gradient-text">
+                <template v-if="stat.target !== null">{{ stat.current }}{{ stat.suffix }}</template>
+                <template v-else>{{ stat.symbol }}</template>
               </div>
-            </v-col>
+              <div class="stat-label">{{ stat.label }}</div>
+            </div>
+          </div>
 
-            <!-- Contact details -->
-            <v-col cols="12" md="5" class="mb-5">
-              <div class="info-card glass pa-5">
-                <div class="info-row">
-                  <v-icon color="primary" size="20">mdi-map-marker-outline</v-icon>
-                  <div>
-                    <div class="info-label">Location</div>
-                    <div class="info-value">Banani, Bogura, Bangladesh</div>
-                  </div>
-                </div>
-                <div class="info-row">
-                  <v-icon color="primary" size="20">mdi-email-outline</v-icon>
-                  <div>
-                    <div class="info-label">Email</div>
-                    <div class="info-value">talib@bdthemes.com</div>
-                  </div>
-                </div>
-                <div class="info-row">
-                  <v-icon color="primary" size="20">mdi-phone-outline</v-icon>
-                  <div>
-                    <div class="info-label">Phone</div>
-                    <div class="info-value">+8801795142054</div>
-                  </div>
-                </div>
+          <!-- Info card -->
+          <div class="info-card glass">
+            <div class="info-row">
+              <span class="info-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 13a4 4 0 100-8 4 4 0 000 8z"/><path d="M12 22s8-4.5 8-10a8 8 0 10-16 0c0 5.5 8 10 8 10z"/></svg>
+              </span>
+              <div>
+                <div class="info-label">Location</div>
+                <div class="info-value">Banani, Bogura, Bangladesh</div>
               </div>
-            </v-col>
-          </v-row>
-        </section>
+            </div>
+            <div class="info-row">
+              <span class="info-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+              </span>
+              <div>
+                <div class="info-label">Email</div>
+                <div class="info-value">talib@bdthemes.com</div>
+              </div>
+            </div>
+            <div class="info-row">
+              <span class="info-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.07 2.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+              </span>
+              <div>
+                <div class="info-label">Phone</div>
+                <div class="info-value">+8801795142054</div>
+              </div>
+            </div>
+          </div>
 
-        <!-- Section 2, What I can do for you -->
-        <section>
-          <div class="section-eyebrow mt-12 mb-2">02 — Services</div>
-          <h2 class="text-h2 font-weight-bold mb-6">What I <span class="gradient-text">can do.</span></h2>
+          <!-- Signature -->
+          <img :src="signature" alt="Abu Talib signature" class="signature-img" />
+        </aside>
 
-          <div>
-            <v-expansion-panels variant="accordion" class="glass-panels">
-              <v-expansion-panel
+        <!-- Right: content column -->
+        <div class="about-right">
+          <!-- Who I am -->
+          <div class="fade-up">
+            <div class="section-eyebrow">01 — Introduction</div>
+            <h2 class="section-heading">Who <span class="gradient-text">I am.</span></h2>
+            <p class="about-bio">{{ aboutMe }}</p>
+          </div>
+
+          <!-- What I can do -->
+          <div class="fade-up delay-2" style="margin-top: 64px;">
+            <div class="section-eyebrow">02 — Services</div>
+            <h2 class="section-heading">What I <span class="gradient-text">can do.</span></h2>
+
+            <div class="accordion">
+              <div
                 v-for="(item, i) in aboutItems"
                 :key="i"
-                bg-color="transparent"
+                class="accordion-item"
+                :class="{ 'is-open': openPanel === i }"
               >
-                <v-expansion-panel-title>
-                  <div class="d-flex align-center" style="gap:14px">
-                    <span class="panel-number">0{{ i + 1 }}</span>
-                    <div class="text-h6 font-weight-medium">{{ item.title }}</div>
-                  </div>
-                </v-expansion-panel-title>
-                <v-expansion-panel-text>
-                  <div class="text-body-2 text-medium-emphasis">{{ item.description }}</div>
-                </v-expansion-panel-text>
-              </v-expansion-panel>
-            </v-expansion-panels>
-          </div>
-        </section>
-      </v-col>
-
-      <!-- Right column: stats + portrait -->
-      <v-col md="5" class="d-none d-md-flex flex-column pl-md-8">
-        <div class="stats-grid mb-6">
-          <div class="stat-card glass">
-            <div class="stat-num gradient-text">5+</div>
-            <div class="stat-label">Years experience</div>
-          </div>
-          <div class="stat-card glass">
-            <div class="stat-num gradient-text">100+</div>
-            <div class="stat-label">Projects shipped</div>
-          </div>
-          <div class="stat-card glass">
-            <div class="stat-num gradient-text">30+</div>
-            <div class="stat-label">WordPress themes</div>
-          </div>
-          <div class="stat-card glass">
-            <div class="stat-num gradient-text">∞</div>
-            <div class="stat-label">Cups of coffee</div>
+                <button
+                  class="accordion-trigger"
+                  @click="openPanel = openPanel === i ? null : i"
+                  :aria-expanded="openPanel === i"
+                >
+                  <span class="panel-num">0{{ i + 1 }}</span>
+                  <span class="panel-title">{{ item.title }}</span>
+                  <span class="panel-chevron" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </span>
+                </button>
+                <div class="accordion-body">
+                  <p>{{ item.description }}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </v-col>
-    </v-row>
+      </div>
+    </div>
   </section>
 </template>
-
 
 <script>
 import abstract1 from "@/assets/abstract-1.png";
@@ -111,8 +107,16 @@ export default {
     return {
       abstract1,
       signature,
+      openPanel: null,
+      statsAnimated: false,
+      stats: [
+        { target: 5,   suffix: '+', label: 'Years experience', current: 0 },
+        { target: 100, suffix: '+', label: 'Projects shipped', current: 0 },
+        { target: 30,  suffix: '+', label: 'WordPress themes', current: 0 },
+        { target: null, symbol: '\u221e', label: 'Cups of coffee' },
+      ],
       aboutMe:
-        "Hi there! I'm Abu Talib. But everyone also known me as TALIB. I am a Software Engineer at BdThemes. I have over 5+ years of web developing experience in various languages. For me, sky's the limit.",
+        "Hi there! I'm Abu Talib — known to most as just TALIB. I'm a Software Engineer at BdThemes with 5+ years of experience building everything from pixel-perfect frontend interfaces to WordPress plugins used by thousands daily. For me, the sky's the limit.",
       aboutItems: [
         {
           title: "Front End Development",
@@ -129,11 +133,10 @@ export default {
           description:
             "As a WordPress Developer or Elementor Expert you know that sometimes Elementor Or Elementor Pro default Widget is not enough to create your website. that's why you need a more customizable, Modern, and advanced Elementor Widget. @Hey! don't worry, I  will develop Elementor Addons or Wedget from scratch. I just want to make your life easier and put a smile on your face:)",
         },
-
         {
           title: "Online Store or e-Commerce Website",
           description:
-            "I know, this is not something to boast of but yeah I have pretty decent knowledge of WooCommerce Website Development; In the world wide, I’ve dozens of active online store & e-commerce Website that I designed, customized and developed.",
+            "I know, this is not something to boast of but yeah I have pretty decent knowledge of WooCommerce Website Development; In the world wide, I've dozens of active online store & e-commerce Website that I designed, customized and developed.",
         },
         {
           title: "REST APIs",
@@ -153,43 +156,64 @@ export default {
       ],
     };
   },
+  mounted() {
+    const statsEl = this.$refs.statsGrid;
+    if (!statsEl) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !this.statsAnimated) {
+        this.statsAnimated = true;
+        this.stats.forEach(stat => {
+          if (stat.target !== null) this.animateStat(stat);
+        });
+        observer.disconnect();
+      }
+    }, { threshold: 0.55 });
+    observer.observe(statsEl);
+  },
+  methods: {
+    animateStat(stat) {
+      const duration = 1800;
+      const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 4);
+        stat.current = Math.round(eased * stat.target);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    },
+    togglePanel(i) {
+      this.openPanel = this.openPanel === i ? null : i;
+    },
+  },
 };
 </script>
 
-
 <style scoped>
-section {
-  position: relative;
+section { position: relative; }
+
+/* ── Grid ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 80px;
+  align-items: start;
 }
 
-.abstract-1 {
-  position: absolute !important;
-  left: -48px;
-  top: -48px;
-  z-index: 0 !important;
-  opacity: 0.35;
-}
-
-.section-eyebrow {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #ffaa00;
-}
+/* ── Left Column ── */
+.about-left { display: flex; flex-direction: column; gap: 20px; }
 
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  gap: 12px;
 }
 .stat-card {
-  padding: 22px 18px;
+  padding: 24px 18px;
   text-align: center;
 }
 .stat-num {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-size: 40px;
   font-weight: 700;
   line-height: 1;
@@ -197,55 +221,149 @@ section {
 }
 .stat-label {
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
+  color: var(--color-muted);
 }
 
+/* Info card */
+.info-card {
+  padding: 8px 20px;
+}
 .info-row {
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  padding: 10px 0;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
 }
-.info-row + .info-row { border-top: 1px solid rgba(255,255,255,0.06); }
+.info-row:last-child { border-bottom: none; }
+.info-icon {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-accent-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
 .info-label {
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
+  color: var(--color-muted);
   margin-bottom: 2px;
 }
 .info-value {
-  font-size: 14px;
-  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  color: var(--color-text);
 }
 
-.panel-number {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 12px;
+.signature-img {
+  width: 140px;
+  opacity: 0.7;
+  filter: invert(1) brightness(0.8);
+}
+
+/* ── Right Column ── */
+.section-heading {
+  font-size: clamp(32px, 4vw, 52px);
   font-weight: 700;
-  color: #ffaa00;
-  letter-spacing: 0.15em;
+  line-height: 1.1;
+  margin-bottom: 24px;
 }
 
-.glass-panels :deep(.v-expansion-panel) {
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 14px !important;
-  margin-bottom: 10px;
-  background: rgba(255,255,255,0.02) !important;
-  transition: border-color .25s ease, background .25s ease;
+.about-bio {
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(226, 232, 240, 0.75);
+  margin: 0;
+  max-width: 560px;
 }
-.glass-panels :deep(.v-expansion-panel:hover) {
-  border-color: rgba(255,170,0,0.35);
-  background: rgba(255,255,255,0.04) !important;
+
+/* ── Accordion ── */
+.accordion { display: flex; flex-direction: column; gap: 8px; }
+
+.accordion-item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 0.25s ease;
 }
-.glass-panels :deep(.v-expansion-panel--active) {
-  border-color: rgba(255,170,0,0.5);
+.accordion-item.is-open,
+.accordion-item:hover {
+  border-color: var(--color-accent-border);
 }
-.glass-panels :deep(.v-expansion-panel__shadow) { display: none; }
-.glass-panels :deep(.v-expansion-panel-title) { padding: 16px 20px; }
-.glass-panels :deep(.v-expansion-panel-text__wrapper) { padding: 4px 20px 20px 20px; }
+
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--color-text);
+  transition: background 0.2s ease;
+}
+.accordion-trigger:hover { background: rgba(255, 255, 255, 0.03); }
+
+.panel-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+.panel-title {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+}
+.panel-chevron {
+  color: var(--color-muted);
+  flex-shrink: 0;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+.accordion-item.is-open .panel-chevron {
+  transform: rotate(180deg);
+  color: var(--color-accent);
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.accordion-item.is-open .accordion-body { max-height: 240px; }
+.accordion-body p {
+  padding: 4px 20px 20px 20px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-muted);
+  padding-left: calc(20px + 16px + 20px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: 280px 1fr; gap: 48px; }
+}
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about-left { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .stats-grid { grid-column: 1 / -1; }
+  .signature-img { display: none; }
+}
+@media (max-width: 640px) {
+  .about-left { grid-template-columns: 1fr; }
+}
 </style>

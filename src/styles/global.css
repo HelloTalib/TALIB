@@ -1,113 +1,220 @@
 /* =========================================================
-   Modern design tokens
+   Design Tokens
    ========================================================= */
 :root {
-  --accent-from: #ffaa00;
-  --accent-to:   #ff5e62;
-  --accent-grad: linear-gradient(135deg, #ffaa00 0%, #ff5e62 100%);
-  --bg-base:     #0b0b10;
-  --bg-elev-1:   #15151c;
-  --bg-elev-2:   #1c1c24;
-  --border-soft: rgba(255,255,255,0.08);
-  --text-mute:   rgba(255,255,255,0.65);
-  --shadow-soft: 0 10px 30px rgba(0,0,0,0.35);
-  --shadow-glow: 0 12px 40px rgba(255, 170, 0, 0.18);
+  --color-bg:           #0A0A0F;
+  --color-surface:      #13131A;
+  --color-surface-2:    #1A1A24;
+  --color-accent:       #6EE7B7;
+  --color-accent-dim:   rgba(110, 231, 183, 0.12);
+  --color-accent-border:rgba(110, 231, 183, 0.28);
+  --color-text:         #E2E8F0;
+  --color-muted:        #64748B;
+  --color-border:       rgba(255, 255, 255, 0.07);
+  --font-display:       'Syne', sans-serif;
+  --font-body:          'Inter', sans-serif;
+  --font-mono:          'JetBrains Mono', monospace;
+  --radius-sm:          4px;
+  --radius-md:          12px;
+  --radius-lg:          20px;
+  --transition-base:    0.2s ease;
+  --shadow-soft:        0 12px 40px rgba(0, 0, 0, 0.5);
+  --shadow-glow:        0 0 48px rgba(110, 231, 183, 0.14);
+  --nav-height:         72px;
 }
 
 /* =========================================================
-   Base
+   Base Reset
    ========================================================= */
-html { scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  scroll-padding-top: var(--nav-height);
+}
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  background: var(--bg-base);
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-.v-application,
-.v-application .v-main {
-  background: radial-gradient(1200px 600px at 80% -10%, rgba(255,170,0,0.08), transparent 60%),
-              radial-gradient(900px 500px at -10% 30%, rgba(255,94,98,0.06), transparent 60%),
-              var(--bg-base) !important;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--color-text);
 }
 
-/* Headings get the display font */
-h1, h2, h3, h4, h5, h6,
-.text-h1, .text-h2, .text-h3, .text-h4, .text-h5, .text-h6 {
-  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif !important;
-  letter-spacing: -0.01em;
+a { color: inherit; }
+
+img { display: block; max-width: 100%; }
+
+/* =========================================================
+   Vuetify Layout Overrides (keep Vuetify for Contact form)
+   ========================================================= */
+.v-application {
+  background: var(--color-bg) !important;
+  color: var(--color-text) !important;
+  font-family: var(--font-body) !important;
+}
+.v-application__wrap { min-height: 100vh; }
+.v-main {
+  padding-block-start:  0 !important;
+  padding-block-end:    0 !important;
+  padding-inline-start: 0 !important;
+  padding-inline-end:   0 !important;
+  padding: 0 !important;
+  --v-layout-left:   0px !important;
+  --v-layout-right:  0px !important;
+  --v-layout-top:    0px !important;
+  --v-layout-bottom: 0px !important;
+}
+.v-main__wrap {
+  padding: 0 !important;
+  min-height: unset !important;
 }
 
-/* Gradient accent utility */
+/* =========================================================
+   Gradient Text Utility
+   ========================================================= */
 .gradient-text {
-  background: var(--accent-grad);
+  background: linear-gradient(135deg, var(--color-accent) 0%, #34D399 60%, #A7F3D0 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-/* Glass surfaces */
+/* =========================================================
+   Glass Surfaces
+   ========================================================= */
 .glass {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-radius: 18px;
+  border-radius: var(--radius-lg);
 }
 
 .glass-strong {
-  background: rgba(28,28,36,0.7);
-  border: 1px solid var(--border-soft);
+  background: rgba(19, 19, 26, 0.8);
+  border: 1px solid var(--color-border);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-radius: 22px;
+  border-radius: var(--radius-lg);
 }
 
-/* Gradient button */
-.btn-gradient.v-btn {
-  background: var(--accent-grad) !important;
-  color: #0b0b10 !important;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  box-shadow: var(--shadow-glow);
-}
-.btn-gradient.v-btn:hover {
-  filter: brightness(1.08);
-  transform: translateY(-1px);
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar         { width: 10px; height: 10px; }
-::-webkit-scrollbar-track   { background: var(--bg-base); }
-::-webkit-scrollbar-thumb   {
-  background: linear-gradient(180deg, #ffaa00, #ff5e62);
-  border-radius: 10px;
-  border: 2px solid var(--bg-base);
-}
-::-webkit-scrollbar-thumb:hover { filter: brightness(1.1); }
-
-/* Selection */
-::selection { background: rgba(255,170,0,0.35); color: #fff; }
-
-/* Section spacing */
-section { padding-top: 64px; padding-bottom: 64px; }
-
-/* Hover lift utility */
+/* =========================================================
+   Hover Lift Utility
+   ========================================================= */
 .hover-lift {
-  transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .35s ease;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+  will-change: transform;
 }
 .hover-lift:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-soft);
-  border-color: rgba(255,170,0,0.35) !important;
+  border-color: var(--color-accent-border) !important;
 }
 
-/* Reveal on scroll (subtle fade-up) */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* =========================================================
+   Section Common Styles
+   ========================================================= */
+.section-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 48px;
 }
-.reveal { animation: fadeUp .8s ease both; }
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   Scroll-triggered Fade-Up Animations
+   ========================================================= */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up.delay-1 { transition-delay: 0.1s; }
+.fade-up.delay-2 { transition-delay: 0.2s; }
+.fade-up.delay-3 { transition-delay: 0.3s; }
+.fade-up.delay-4 { transition-delay: 0.45s; }
+.fade-up.delay-5 { transition-delay: 0.55s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================================
+   Scrollbar
+   ========================================================= */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-2);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent-border); }
+
+/* =========================================================
+   Selection
+   ========================================================= */
+::selection { background: rgba(110, 231, 183, 0.22); color: #fff; }
+
+/* =========================================================
+   Focus Styles
+   ========================================================= */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* =========================================================
+   Responsive Section Padding
+   ========================================================= */
+@media (max-width: 1024px) { .section-wrap { padding: 64px 32px; } }
+@media (max-width: 768px)  { .section-wrap { padding: 56px 24px; } }
+@media (max-width: 640px)  { .section-wrap { padding: 48px 16px; } }

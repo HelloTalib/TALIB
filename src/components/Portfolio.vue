@@ -1,41 +1,74 @@
 <template>
   <section id="portfolio">
-    <v-img :src="abstract3" cover class="abstract-3"></v-img>
-
-    <div class="pa-5 position-relative">
-      <div class="d-flex flex-wrap align-end justify-space-between mb-8" style="gap:16px">
+    <div class="section-wrap">
+      <!-- Header -->
+      <div class="portfolio-header fade-up">
         <div>
-          <div class="section-eyebrow mb-2">05 — Portfolio</div>
-          <h2 class="text-h2 font-weight-bold mb-0">What I've <span class="gradient-text">done.</span></h2>
+          <div class="section-eyebrow">05 — Portfolio</div>
+          <h2 class="section-heading">What I've <span class="gradient-text">done.</span></h2>
         </div>
-        <div class="text-body-2 text-medium-emphasis" style="max-width: 420px;">
-          A selection of projects spanning frontend, WordPress, and full-stack work.
-        </div>
+        <p class="portfolio-sub">A selection of projects spanning frontend, WordPress, and full-stack work.</p>
       </div>
 
-      <div class="projects-grid">
+      <!-- Asymmetric grid: first item featured (full width) -->
+      <div class="projects-layout">
+        <!-- Featured project (index 0) -->
         <a
-          v-for="(item, index) in items"
-          :key="index"
-          :href="item.source"
+          v-if="items.length > 0"
+          :href="items[0].source"
           target="_blank"
-          rel="noopener"
-          class="project-card hover-lift"
+          rel="noopener noreferrer"
+          class="project-card project-featured fade-up delay-1"
+          :aria-label="'View project: ' + items[0].title"
+          @mousemove="onCardTilt($event)"
+          @mouseleave="onCardLeave($event)"
         >
+          <div class="card-shine" aria-hidden="true"></div>
           <div class="project-thumb">
-            <img :src="item.img" :alt="item.title" />
+            <img :src="items[0].img" :alt="items[0].title" loading="lazy" />
             <div class="project-overlay">
-              <div class="overlay-inner">
-                <div class="overlay-year">{{ item.year }}</div>
-                <v-icon size="28" color="white">mdi-arrow-top-right</v-icon>
-              </div>
+              <span class="overlay-year">{{ items[0].year }}</span>
+              <span class="overlay-arrow" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+              </span>
             </div>
           </div>
           <div class="project-body">
-            <div class="project-title">{{ item.title }}</div>
-            <div class="project-desc">{{ item.desc }}</div>
+            <span class="project-badge">Featured</span>
+            <h3 class="project-title">{{ items[0].title }}</h3>
+            <p class="project-desc">{{ items[0].desc }}</p>
           </div>
         </a>
+
+        <!-- Remaining projects (2-col grid) -->
+        <div class="projects-grid">
+          <a
+            v-for="(item, index) in items.slice(1)"
+            :key="index"
+            :href="item.source"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-card fade-up"
+            :class="'delay-' + Math.min(index + 2, 5)"
+            @mousemove="onCardTilt($event)"
+            @mouseleave="onCardLeave($event)"
+          >
+            <div class="card-shine" aria-hidden="true"></div>
+            <div class="project-thumb">
+              <img :src="item.img" :alt="item.title" loading="lazy" />
+              <div class="project-overlay">
+                <span class="overlay-year">{{ item.year }}</span>
+                <span class="overlay-arrow" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">{{ item.title }}</h3>
+              <p class="project-desc">{{ item.desc }}</p>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -55,6 +88,25 @@ import demoCreativeHub from "@/assets/portfolio/demo-creative-hub.png";
 import demoDesignBites from "@/assets/portfolio/demo-design-bites.png";
 
 export default {
+  methods: {
+    onCardTilt(e) {
+      const card = e.currentTarget;
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width  - 0.5;
+      const y = (e.clientY - rect.top)  / rect.height - 0.5;
+      card.style.transform = `perspective(700px) rotateX(${y * -10}deg) rotateY(${x * 10}deg) translateY(-4px) scale(1.01)`;
+      const shine = card.querySelector(".card-shine");
+      if (shine) shine.style.background = `radial-gradient(circle at ${(x + 0.5) * 100}% ${(y + 0.5) * 100}%, rgba(110,231,183,0.13) 0%, transparent 55%)`;
+    },
+    onCardLeave(e) {
+      const card = e.currentTarget;
+      card.style.transform = "";
+      card.style.transition = "transform 0.5s cubic-bezier(0.2,0.7,0.2,1)";
+      const shine = card.querySelector(".card-shine");
+      if (shine) shine.style.background = "";
+      setTimeout(() => { card.style.transition = ""; }, 500);
+    },
+  },
   data() {
     return {
       abstract3,
@@ -166,108 +218,168 @@ export default {
 };
 </script>
 
-
 <style scoped>
 section { position: relative; }
-
-.abstract-3 {
-  position: absolute !important;
-  left: 0;
-  right: 0;
-  z-index: 0 !important;
-  opacity: 0.25;
-}
-
 a { text-decoration: none; color: inherit; }
 
-.section-eyebrow {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #ffaa00;
+/* ── Header ── */
+.portfolio-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+.section-heading {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0;
+}
+.portfolio-sub {
+  font-size: 14px;
+  color: var(--color-muted);
+  max-width: 380px;
+  line-height: 1.7;
+  margin: 0;
 }
 
+/* ── Layout ── */
+.projects-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
+/* ── Card base ── */
 .project-card {
   display: block;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 18px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  color: inherit;
+  will-change: transform;
+  transform-style: preserve-3d;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.project-card:hover {
+  box-shadow: var(--shadow-soft);
+  border-color: var(--color-accent-border);
 }
 
+/* ── Shine layer ── */
+.card-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  transition: background 0.15s ease;
+}
+
+/* ── Thumbnail ── */
 .project-thumb {
   position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: #0e0e14;
+  background: var(--color-surface);
 }
+.project-featured .project-thumb { aspect-ratio: 16 / 7; }
+
 .project-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .6s cubic-bezier(.2,.7,.2,1), filter .6s ease;
+  transition: transform 0.6s cubic-bezier(0.2,0.7,0.2,1);
 }
-.project-card:hover .project-thumb img {
-  transform: scale(1.06);
-  filter: saturate(1.1);
-}
+.project-card:hover .project-thumb img { transform: scale(1.04); }
 
+/* ── Overlay ── */
 .project-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(11,11,16,0) 30%, rgba(11,11,16,0.85) 100%);
+  background: linear-gradient(180deg, transparent 35%, rgba(10,10,15,0.88) 100%);
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
+  padding: 16px 20px;
   opacity: 0;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 }
 .project-card:hover .project-overlay { opacity: 1; }
-.overlay-inner {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 18px;
-}
+
 .overlay-year {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  color: #ffaa00;
-  background: rgba(255,170,0,0.12);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-accent-border);
   padding: 4px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(255,170,0,0.4);
+}
+.overlay-arrow {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
+  color: #0A0A0F;
+  border-radius: 50%;
 }
 
+/* ── Body ── */
 .project-body {
-  padding: 18px 20px 22px;
+  padding: 20px 24px 24px;
+}
+.project-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-accent-border);
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
 }
 .project-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-size: 18px;
   font-weight: 600;
-  color: #fff;
-  margin-bottom: 6px;
+  color: var(--color-text);
+  margin-bottom: 8px;
 }
+.project-featured .project-title { font-size: 22px; }
 .project-desc {
   font-size: 13px;
-  color: rgba(255,255,255,0.6);
-  line-height: 1.55;
+  color: var(--color-muted);
+  line-height: 1.6;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-featured .project-thumb { aspect-ratio: 16 / 9; }
 }
 </style>
-

@@ -81,8 +81,16 @@ import personalPortfolio from "@/assets/portfolio/personal-portfolio.png";
 export default {
   methods: {
     onImgError(e) {
-      e.target.style.display = 'none';
-      e.target.closest('.project-thumb').classList.add('thumb-empty');
+      const img = e.target;
+      const src = img.getAttribute('src') || '';
+      if (src.endsWith('.jpg')) {
+        // Step 1: .jpg failed → try .png
+        img.src = src.replace('.jpg', '.png');
+      } else {
+        // Step 2: .png also failed → show styled fallback
+        img.style.display = 'none';
+        img.closest('.project-thumb').classList.add('thumb-empty');
+      }
     },
     onCardTilt(e) {
       const card = e.currentTarget;

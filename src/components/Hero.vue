@@ -30,7 +30,7 @@
         </h1>
 
         <div class="hero-role hero-anim" style="animation-delay:0.55s">
-          Software Engineer&nbsp;&nbsp;·&nbsp;&nbsp;WebNinja
+          Software Developer&nbsp;&nbsp;·&nbsp;&nbsp;WordPress Developer
         </div>
 
         <div class="hero-cta hero-anim" style="animation-delay:0.72s">

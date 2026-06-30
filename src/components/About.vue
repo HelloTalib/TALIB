@@ -116,7 +116,7 @@ export default {
         { target: null, symbol: '\u221e', label: 'Cups of coffee' },
       ],
       aboutMe:
-        "Hi there! I'm Abu Talib — known to most as just TALIB. I'm a Software Engineer at BdThemes with 5+ years of experience building everything from pixel-perfect frontend interfaces to WordPress plugins used by thousands daily. For me, the sky's the limit.",
+        "Hi there! I'm Abu Talib — known to most as just TALIB. I'm a Software Developer at BdThemes with 5+ years of experience building everything from pixel-perfect frontend interfaces to WordPress plugins used by thousands daily. For me, the sky's the limit.",
       aboutItems: [
         {
           title: "Front End Development",

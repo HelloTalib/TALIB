@@ -37,7 +37,7 @@ export default {
     return {
       places: [
         {
-          title: "Senior Software Engineer — BdThemes",
+          title: "Software Developer — BdThemes",
           desc: "Leading Gutenberg product development: shipped ZoloBlocks (5.0 ★, 1,000+ installs) — a full page-builder toolkit, and Instant AI Image Generator (1,000+ installs). Driving architecture decisions across the BdThemes plugin ecosystem.",
           year: "2024–Now",
         },
@@ -47,7 +47,7 @@ export default {
           year: "2022–2023",
         },
         {
-          title: "Software Engineer — BdThemes",
+          title: "Software Developer — BdThemes",
           desc: "Joined BdThemes to build and maintain WordPress plugins. Contributed to Element Pack Lite, Prime Slider, Ultimate Post Kit, and Ultimate Store Kit — collectively installed on hundreds of thousands of WordPress sites worldwide.",
           year: "2021",
         },
